@@ -14,6 +14,13 @@ import { EstruturasUniversidadePage } from '../pages/estruturas-universidade/est
 import { MarcarEncontroPage } from '../pages/marcar-encontro/marcar-encontro';
 import { ProximosEventosPage } from '../pages/proximos-eventos/proximos-eventos';
 import { RegistrarInteracaoPage } from '../pages/registrar-interacao/registrar-interacao';
+import { AprovarCadastroPage } from '../pages/aprovar-cadastro/aprovar-cadastro';
+import { DescadastrarAlunoPage } from '../pages/descadastrar-aluno/descadastrar-aluno';
+import { CadastrarCalouroPage } from '../pages/cadastrar-calouro/cadastrar-calouro';
+import { EnviarMensagemGrupoPage } from '../pages/enviar-mensagem-grupo/enviar-mensagem-grupo';
+import { VincularAlunosPage } from '../pages/vincular-alunos/vincular-alunos';
+import { DesvincularAlunosPage } from '../pages/desvincular-alunos/desvincular-alunos';
+import { ConsultarLogsPage } from '../pages/consultar-logs/consultar-logs';
 
 @NgModule({
   declarations: [
@@ -26,7 +33,15 @@ import { RegistrarInteracaoPage } from '../pages/registrar-interacao/registrar-i
     EstruturasUniversidadePage,
     MarcarEncontroPage,
     ProximosEventosPage,
-    RegistrarInteracaoPage
+    RegistrarInteracaoPage,
+    AprovarCadastroPage,
+    DescadastrarAlunoPage,
+    CadastrarCalouroPage,
+    EnviarMensagemGrupoPage,
+    VincularAlunosPage,
+    DesvincularAlunosPage,
+    ConsultarLogsPage,
+    MarcarEncontroPage
   ],
   imports: [
     BrowserModule,
@@ -43,7 +58,15 @@ import { RegistrarInteracaoPage } from '../pages/registrar-interacao/registrar-i
     EstruturasUniversidadePage,
     MarcarEncontroPage,
     ProximosEventosPage,
-    RegistrarInteracaoPage
+    RegistrarInteracaoPage,
+    AprovarCadastroPage,
+    DescadastrarAlunoPage,
+    CadastrarCalouroPage,
+    EnviarMensagemGrupoPage,
+    VincularAlunosPage,
+    DesvincularAlunosPage,
+    ConsultarLogsPage,
+    MarcarEncontroPage
   ],
   providers: [
     StatusBar,
