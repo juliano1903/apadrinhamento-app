@@ -21,5 +21,36 @@ export class HomeCoordenadorPage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad HomeCoordenadorPage');
   }
+  
+  selecionarDescadastrarAluno() {
 
+  }
+
+  selecionarCadastrarCalouro() {
+
+  }
+
+  selecionarEnviarMensagemGrupo() {
+
+  }
+
+  selecionarVincularAlunos() {
+
+  }
+
+  selecionarDesvincularAlunos() {
+
+  }
+
+  selecionarConsultarLogs() {
+
+  }
+
+  selecionaMarcarEncontro() {
+
+  }
+
+  selecionarAprovarCadastro() {
+    
+  }
 }

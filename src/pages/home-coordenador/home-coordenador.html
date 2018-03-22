@@ -7,12 +7,21 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>homeCoordenador</ion-title>
+    <ion-title>Coordenador</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
-
+  <ion-list>
+    <ion-item (click)="selecionarAprovarCadastro()">Aprovar cadastro</ion-item>
+    <ion-item (click)="selecionarDescadastrarAluno()">Descadastar aluno</ion-item>
+    <ion-item (click)="selecionarCadastrarCalouro()">Cadastrar calouro</ion-item>
+    <ion-item (click)="selecionarEnviarMensagemGrupo()">Enviar mensagem grupo</ion-item>
+    <ion-item (click)="selecionarVincularAlunos()">Vincular alunos</ion-item>
+    <ion-item (click)="selecionarDesvincularAlunos()">Desvincular alunos</ion-item>
+    <ion-item (click)="selecionarConsultarLogs()">Consultar logs</ion-item>
+    <ion-item (click)="selecionaMarcarEncontro()">Marcar encontro</ion-item>
+  </ion-list>
 </ion-content>
