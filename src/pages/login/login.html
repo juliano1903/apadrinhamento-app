@@ -1,0 +1,26 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>login</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <form (ngSubmit)="efetuaLogin()">
+    
+    <ion-item stacked>
+      <ion-label>Matricula</ion-label>
+      <ion-input [(ngModel)]="matricula" name="matricula" type="text"></ion-input>
+    </ion-item>
+
+    <ion-item stacked>
+      <ion-label>Senha</ion-label>
+      <ion-input [(ngModel)]="senha" name="senha" type="password"></ion-input>
+    </ion-item>
+
+    <button ion-button block type="submit">ENTRAR</button>
+
+  </form>
+</ion-content>

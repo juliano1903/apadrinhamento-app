@@ -21,6 +21,9 @@ import { EnviarMensagemGrupoPage } from '../pages/enviar-mensagem-grupo/enviar-m
 import { VincularAlunosPage } from '../pages/vincular-alunos/vincular-alunos';
 import { DesvincularAlunosPage } from '../pages/desvincular-alunos/desvincular-alunos';
 import { ConsultarLogsPage } from '../pages/consultar-logs/consultar-logs';
+import { LoginPage } from '../pages/login/login';
+import { AuthServiceProvider } from '../providers/auth-service/auth-service';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -41,11 +44,13 @@ import { ConsultarLogsPage } from '../pages/consultar-logs/consultar-logs';
     VincularAlunosPage,
     DesvincularAlunosPage,
     ConsultarLogsPage,
-    MarcarEncontroPage
+    MarcarEncontroPage,
+    LoginPage
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
+    HttpClientModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -66,12 +71,14 @@ import { ConsultarLogsPage } from '../pages/consultar-logs/consultar-logs';
     VincularAlunosPage,
     DesvincularAlunosPage,
     ConsultarLogsPage,
-    MarcarEncontroPage
+    MarcarEncontroPage,
+    LoginPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    AuthServiceProvider
   ]
 })
 export class AppModule {}
