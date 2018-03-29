@@ -40,7 +40,7 @@ export class LoginPage {
 //        )
     console.log(this.matricula);
 
-    if(matricula == '1') {
+    if(this.matricula ==  1) {
       this.navCtrl.setRoot(HomeCoordenadorPage);
     } else {
       this.navCtrl.setRoot(HomeAlunoPage);

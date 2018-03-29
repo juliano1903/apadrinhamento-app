@@ -1,6 +1,7 @@
 export interface Usuario {
 
-    nome: string,
+    idUsuario: number,
     matricula: number,
+    nome: string,
     emai: string
 }

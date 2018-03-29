@@ -1,12 +1,7 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
-
-/**
- * Generated class for the AprovarCadastroPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import { IonicPage, NavController, NavParams, Loading, LoadingController } from 'ionic-angular';
+import { Usuario } from '../../modelos/usuario';
+import { UsuarioServiceProvider } from '../../providers/usuario-service/usuario-service';
 
 @IonicPage()
 @Component({
@@ -15,8 +10,28 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class AprovarCadastroPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  public usuarioPendente: Usuario[];
+
+  constructor(public navCtrl: NavController, 
+              public navParams: NavParams, 
+              private usuarioService: UsuarioServiceProvider,
+              private _loadingCtrl: LoadingController) {
+
+    let loading = _loadingCtrl.create({
+      content: 'Carregando..'
+    });
+
+    loading.present();
+
+    this.usuarioService.pendentesAceite()
+      .subscribe(
+        (usuarios) => {
+          this.usuarioPendente = usuarios;
+          loading.dismiss();
+        }
+      )
   }
+
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad AprovarCadastroPage');

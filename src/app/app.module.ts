@@ -24,6 +24,7 @@ import { ConsultarLogsPage } from '../pages/consultar-logs/consultar-logs';
 import { LoginPage } from '../pages/login/login';
 import { AuthServiceProvider } from '../providers/auth-service/auth-service';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { UsuarioServiceProvider } from '../providers/usuario-service/usuario-service';
 
 @NgModule({
   declarations: [
@@ -78,7 +79,8 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    AuthServiceProvider
+    AuthServiceProvider,
+    UsuarioServiceProvider
   ]
 })
 export class AppModule {}
