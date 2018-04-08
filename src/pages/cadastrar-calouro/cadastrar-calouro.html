@@ -25,7 +25,12 @@
         <ion-label>Matricula</ion-label>
         <ion-input [(ngModel)]="matriculaUsuario" name="matriculaUsuario" type="text"></ion-input>
       </ion-item>
-      
+
+      <ion-item>
+        <ion-label>Start Time</ion-label>
+        <ion-datetime displayFormat="MM/YYYY" pickerFormat="MM YYYY" name="dataMatricula" [(ngModel)]="dataMatricula"></ion-datetime>
+      </ion-item>
+    
       <ion-item stacked>
         <ion-label>Senha</ion-label>
         <ion-input [(ngModel)]="senhaUsuario" name="senhaUsuario" type="password"></ion-input>

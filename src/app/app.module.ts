@@ -25,6 +25,7 @@ import { LoginPage } from '../pages/login/login';
 import { AuthServiceProvider } from '../providers/auth-service/auth-service';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { UsuarioServiceProvider } from '../providers/usuario-service/usuario-service';
+import { CadastroPage } from '../pages/cadastro/cadastro';
 
 @NgModule({
   declarations: [
@@ -46,7 +47,8 @@ import { UsuarioServiceProvider } from '../providers/usuario-service/usuario-ser
     DesvincularAlunosPage,
     ConsultarLogsPage,
     MarcarEncontroPage,
-    LoginPage
+    LoginPage,
+    CadastroPage
   ],
   imports: [
     BrowserModule,
@@ -73,7 +75,8 @@ import { UsuarioServiceProvider } from '../providers/usuario-service/usuario-ser
     DesvincularAlunosPage,
     ConsultarLogsPage,
     MarcarEncontroPage,
-    LoginPage
+    LoginPage,
+    CadastroPage
   ],
   providers: [
     StatusBar,

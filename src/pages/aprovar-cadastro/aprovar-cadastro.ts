@@ -26,6 +26,7 @@ export class AprovarCadastroPage {
     this.usuarioService.pendentesAceite()
       .subscribe(
         (usuarios) => {
+          console.log(usuarios);
           this.usuarioPendente = usuarios;
           loading.dismiss();
         }

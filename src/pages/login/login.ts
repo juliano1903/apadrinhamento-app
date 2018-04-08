@@ -4,6 +4,8 @@ import { HomeCoordenadorPage } from '../home-coordenador/home-coordenador';
 import { AuthServiceProvider } from '../../providers/auth-service/auth-service';
 import { Usuario } from '../../modelos/usuario';
 import { HomeAlunoPage } from '../home-aluno/home-aluno';
+import { CadastroPage } from '../cadastro/cadastro';
+import { CadastrarCalouroPage } from '../cadastrar-calouro/cadastrar-calouro';
 
 
 @IonicPage()
@@ -45,6 +47,10 @@ export class LoginPage {
     } else {
       this.navCtrl.setRoot(HomeAlunoPage);
     }
+  }
+
+  selecionarCadadastro() {
+    this.navCtrl.setRoot(CadastrarCalouroPage);
   }
 
 }
