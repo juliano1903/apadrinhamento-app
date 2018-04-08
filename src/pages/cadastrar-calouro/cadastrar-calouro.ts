@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { UsuarioServiceProvider } from '../../providers/usuario-service/usuario-service';
 
 /**
  * Generated class for the CadastrarCalouroPage page.
@@ -15,11 +16,33 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class CadastrarCalouroPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+
+  matriculaUsuario: number;
+  nomeUsuario: string;
+  senhaUsuario: string;
+
+  constructor(public navCtrl: NavController, 
+              public navParams: NavParams,
+              public _usuarioService: UsuarioServiceProvider) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad CadastrarCalouroPage');
+  }
+
+  cadastrarAluno() {
+
+    let usuario = {
+      matricula: this.matriculaUsuario,
+      nome: this.nomeUsuario,
+      senha: this.senhaUsuario
+    };
+    
+    this._usuarioService.cadastrarAluno(usuario)
+      .subscribe(
+        (data) => console.log(data),
+        (data) => console.log(data)
+      );
   }
 
 }

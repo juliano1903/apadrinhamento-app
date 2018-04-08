@@ -14,5 +14,24 @@
 
 
 <ion-content padding>
-
+    <form (ngSubmit)="cadastrarAluno()">
+      
+      <ion-item stacked>
+        <ion-label>Nome</ion-label>
+        <ion-input [(ngModel)]="nomeUsuario" name="nomeUsuario" type="text"></ion-input>
+      </ion-item>   
+ 
+      <ion-item stacked>
+        <ion-label>Matricula</ion-label>
+        <ion-input [(ngModel)]="matriculaUsuario" name="matriculaUsuario" type="text"></ion-input>
+      </ion-item>
+      
+      <ion-item stacked>
+        <ion-label>Senha</ion-label>
+        <ion-input [(ngModel)]="senhaUsuario" name="senhaUsuario" type="password"></ion-input>
+      </ion-item>
+    
+      <button ion-button block type="submit">CADASTRAR</button>
+    
+    </form>
 </ion-content>

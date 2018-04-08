@@ -14,5 +14,7 @@
 
 
 <ion-content padding>
-
+  <ion-list *ngFor="let usuario of usuarioPendente">
+    <ion-item>{{usuario.nome}}</ion-item>
+  </ion-list>
 </ion-content>
