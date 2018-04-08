@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { UsuarioServiceProvider } from '../../providers/usuario-service/usuario-service';
 import { HomeAlunoPage } from '../home-aluno/home-aluno';
+import { Usuario } from '../../modelos/usuario';
+import { LoginPage } from '../login/login';
 
 /**
  * Generated class for the CadastrarCalouroPage page.
@@ -45,11 +47,18 @@ export class CadastrarCalouroPage {
 
     this._usuarioService.cadastrarAluno(usuario)
       .subscribe(
-        (data) => console.log(data),
+        (usuario: Usuario) => {
+          console.log(usuario);
+          if(usuario.dataAceite != null) {
+            this.navCtrl.setRoot(HomeAlunoPage);
+          } else {
+            this.navCtrl.setRoot(LoginPage);
+          }
+        },
         (data) => console.log(data)
       );
 
-    this.navCtrl.setRoot(HomeAlunoPage);
+    
   }
 
 }

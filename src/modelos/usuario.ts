@@ -4,10 +4,20 @@ export class Usuario {
     matricula: number;
     nome: string;
     emai: string;
+    senha: string;
+    dataMatricula: string;
+    calouro: boolean;
+    dsPerfil: string;
+    dataAceite: string;
 
-    constructor(matricula, nome, email) {
+    constructor(matricula, nome, senha, dataMatricula) {
         this.matricula = matricula;
         this.nome = nome;
-        this.emai = email;
+        this.nome = senha;
+        this.dataMatricula = dataMatricula; 
+    }
+
+    getDsPerfil() {
+        return this.calouro ? 'Calouro' : 'Veterano'; 
     }
 }
