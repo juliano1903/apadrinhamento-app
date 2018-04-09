@@ -9,6 +9,8 @@ export class Usuario {
     calouro: boolean;
     dsPerfil: string;
     dataAceite: string;
+    dataNegativa: string;
+    justificativaNegativa: string;
 
     constructor(matricula, nome, senha, dataMatricula) {
         this.matricula = matricula;
