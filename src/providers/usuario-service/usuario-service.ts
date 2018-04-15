@@ -21,11 +21,12 @@ export class UsuarioServiceProvider {
      headers: new HttpHeaders({
        'Content-Type':  'application/json',
         'Access-Control-Allow-Methods': 'POST, GET, PUT, DELETE, OPTIONS',
-        'Access-Control-Allow-Origin': 'http://localhost:8100'
+        'Access-Control-Allow-Origin': 'http://localhost:8100',
+        'x-access-token': 'teste'
       })
     };
 
-    return this._http.post('http://localhost:8100/v1/usuario/salva', usuario);
+    return this._http.post('http://localhost:8100/v1/usuario/salva', usuario, httpOptions);
     //return this._http.post<Usuario[]>('http://localhost:8080/v1/usuario/pendentes-aceite', data, options);
   }
 

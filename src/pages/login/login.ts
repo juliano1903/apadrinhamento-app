@@ -22,31 +22,32 @@ export class LoginPage {
               private _authService: AuthServiceProvider, private _alertCtrl: AlertController) {
   }
 
-  efetuaLogin(matricula, senha) {
+  efetuaLogin() {
 
-    //    var usuario = this._authService.efetuaLogin(this.matricula, this.senha);
+    let usuario = {
+      matricula: this.matricula,
+      senha: this.senha
+    }
 
     //código para quando houver um retorno do serviço de login
-//    var usuario = this._authService.efetuaLogin(this.matricula, this.senha)
-//        .subscribe(
-//         (usuario: Usuario) => {
-//            this.navCtrl.setRoot(HomeCoordenadorPage);
-//          },
-//          () => {
-//            this._alertCtrl.create({
-//              title: "Falha no login",
-//              subTitle: "Matricula ou email incorreto, verifique!",
-//              buttons: [{ text: "Ok"}]
-//            }).present();
-//          }
-//        )
-    console.log(this.matricula);
-
-    if(this.matricula ==  1) {
-      this.navCtrl.setRoot(HomeCoordenadorPage);
-    } else {
-      this.navCtrl.setRoot(HomeAlunoPage);
-    }
+    this._authService.efetuaLogin(usuario)
+        .subscribe(
+         (usuario: Usuario) => {
+          console.log("Usuario logado: " + usuario.nome);
+          if(usuario.idTipoUsuario == 1) {
+            this.navCtrl.setRoot(HomeAlunoPage);            
+          } else {
+            this.navCtrl.setRoot(HomeCoordenadorPage);
+          }
+        },
+          () => {
+            this._alertCtrl.create({
+              title: "Falha no login",
+              subTitle: "Matricula ou senha incorreta, verifique!",
+              buttons: [{ text: "Ok"}]
+            }).present();
+          }
+        )
   }
 
   selecionarCadadastro() {
