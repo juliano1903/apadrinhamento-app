@@ -1,6 +1,7 @@
 export class Usuario {
 
     idUsuario: number;
+    idCurso: number;
     matricula: number;
     nome: string;
     emai: string;

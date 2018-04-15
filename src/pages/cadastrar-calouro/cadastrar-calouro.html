@@ -16,24 +16,31 @@
 <ion-content padding>
     <form (ngSubmit)="cadastrarAluno()">
       
-      <ion-item stacked>
-        <ion-label>Nome</ion-label>
+      <ion-item>
+        <ion-label stacked>Nome</ion-label>
         <ion-input [(ngModel)]="nomeUsuario" name="nomeUsuario" type="text"></ion-input>
       </ion-item>   
  
-      <ion-item stacked>
-        <ion-label>Matricula</ion-label>
+      <ion-item>
+        <ion-label stacked>Matricula</ion-label>
         <ion-input [(ngModel)]="matriculaUsuario" name="matriculaUsuario" type="text"></ion-input>
       </ion-item>
 
       <ion-item>
-        <ion-label>Start Time</ion-label>
+        <ion-label stacked>Start Time</ion-label>
         <ion-datetime displayFormat="MM/YYYY" pickerFormat="MM YYYY" name="dataMatricula" [(ngModel)]="dataMatricula"></ion-datetime>
       </ion-item>
     
-      <ion-item stacked>
-        <ion-label>Senha</ion-label>
+      <ion-item>
+        <ion-label stacked>Senha</ion-label>
         <ion-input [(ngModel)]="senhaUsuario" name="senhaUsuario" type="password"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label stacked>Curso</ion-label>
+        <ion-select [(ngModel)]="idCurso" name="idCurso" multiple="false">
+          <ion-option *ngFor="let curso of cursosAtivos" [value]="curso.idCurso">{{curso.nome}}</ion-option>
+        </ion-select>
       </ion-item>
     
       <button ion-button block type="submit">CADASTRAR</button>

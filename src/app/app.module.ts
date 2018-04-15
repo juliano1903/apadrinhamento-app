@@ -26,6 +26,7 @@ import { AuthServiceProvider } from '../providers/auth-service/auth-service';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { UsuarioServiceProvider } from '../providers/usuario-service/usuario-service';
 import { CadastroPage } from '../pages/cadastro/cadastro';
+import { CursoServiceProvider } from '../providers/curso-service/curso-service';
 
 @NgModule({
   declarations: [
@@ -83,7 +84,8 @@ import { CadastroPage } from '../pages/cadastro/cadastro';
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     AuthServiceProvider,
-    UsuarioServiceProvider
+    UsuarioServiceProvider,
+    CursoServiceProvider
   ]
 })
 export class AppModule {}
