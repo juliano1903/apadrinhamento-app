@@ -15,6 +15,18 @@ export class UsuarioServiceProvider {
     return this._http.get<Usuario[]>('http://localhost:8100/v1/usuario/pendentes-aceite');
   }
 
+  pendentesVinculacao() {
+    return this._http.get<Usuario[]>('http://localhost:8100/v1/usuario/pendentes-vinculacao');
+  }
+  
+  calourosPendentesVinculacao() {
+    return this._http.get<Usuario[]>('http://localhost:8100/v1/usuario/calouro/pendentes-vinculacao');
+  }
+
+  vateranosPendentesVinculacao() {
+    return this._http.get<Usuario[]>('http://localhost:8100/v1/usuario/veterano/pendentes-vinculacao');
+  }
+
   cadastrarAluno(usuario) {
 
     const httpOptions = {
@@ -27,7 +39,6 @@ export class UsuarioServiceProvider {
     };
 
     return this._http.post('http://localhost:8100/v1/usuario/salva', usuario, httpOptions);
-    //return this._http.post<Usuario[]>('http://localhost:8080/v1/usuario/pendentes-aceite', data, options);
   }
 
   aprovarCadastro(usuario) {
@@ -44,6 +55,22 @@ export class UsuarioServiceProvider {
     console.log(usuario);
     return this._http.post('http://localhost:8100/v1/usuario/aprova-cadastro', usuario);
     //return this._http.post<Usuario[]>('http://localhost:8080/v1/usuario/pendentes-aceite', data, options);
+  }
+
+  vincularAlunos(vinculoUsuarios) {
+
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type':  'application/json',
+         'Access-Control-Allow-Methods': 'POST, GET, PUT, DELETE, OPTIONS',
+         'Access-Control-Allow-Origin': 'http://localhost:8100'
+       })
+     };
+    
+    console.log('Vincular usuarios');
+    console.log(vinculoUsuarios);
+    return this._http.post('http://localhost:8100/v1/usuario/vincula', vinculoUsuarios);
+
   }
 
 }

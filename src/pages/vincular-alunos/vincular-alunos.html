@@ -7,12 +7,17 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>vincularAlunos</ion-title>
+    <ion-title>Vincular Alunos</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
-
+  <ion-list>
+    <ion-item *ngFor="let usuario of usuarioPendente" (click)="aprovarVinculacao(usuario)">
+      <h2>{{usuario.nome}}</h2>
+      <p>{{usuario.dsPerfil}}</p>
+    </ion-item>
+  </ion-list>
 </ion-content>
