@@ -6,6 +6,7 @@ import { Usuario } from '../../modelos/usuario';
 import { LoginPage } from '../login/login';
 import { CursoServiceProvider } from '../../providers/curso-service/curso-service';
 import { Curso } from '../../modelos/curso';
+import { AuthServiceProvider } from '../../providers/auth-service/auth-service';
 
 /**
  * Generated class for the CadastrarCalouroPage page.
@@ -30,12 +31,16 @@ export class CadastrarCalouroPage {
 
   public cursosAtivos: Curso[];
 
+  usuarioLogado: Usuario
 
   constructor(public navCtrl: NavController, 
               public navParams: NavParams,
               public _usuarioService: UsuarioServiceProvider,
               private _cursoService: CursoServiceProvider,
-              private _loadingCtrl: LoadingController) {
+              private _loadingCtrl: LoadingController,
+              private _authService: AuthServiceProvider) {
+
+    this.usuarioLogado = _authService.obtemUsuarioLogado();
 
     let loading = _loadingCtrl.create({
       content : 'Carregando...'
@@ -62,7 +67,8 @@ export class CadastrarCalouroPage {
       nome: this.nomeUsuario,
       senha: this.senhaUsuario,
       dataMatricula: this.dataMatricula,
-      idCurso: this.idCurso
+      idCurso: this.idCurso,
+      idTipoUsuario: 1
     };
 
     console.log(usuario);
@@ -71,16 +77,23 @@ export class CadastrarCalouroPage {
       .subscribe(
         (usuario: Usuario) => {
           console.log(usuario);
-          if(usuario.dataAceite != null) {
-            this.navCtrl.setRoot(HomeAlunoPage);
+          if(!this.usuarioLogado || this.usuarioLogado.idTipoUsuario == 1) {
+            if(usuario.dataAceite != null) {
+              this.navCtrl.setRoot(HomeAlunoPage);
+            } else {
+              this.navCtrl.setRoot(LoginPage);
+            }
           } else {
-            this.navCtrl.setRoot(LoginPage);
+            this.atualizarPagina();
           }
         },
         (data) => console.log(data)
       );
-
-    
   }
 
+  atualizarPagina() {
+    let paginaAtual: number = this.navCtrl.length() - 1;
+    this.navCtrl.push(CadastrarCalouroPage);
+    this.navCtrl.remove(paginaAtual);
+  }
 }

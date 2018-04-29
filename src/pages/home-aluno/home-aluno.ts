@@ -6,6 +6,7 @@ import { EstruturasUniversidadePage } from '../estruturas-universidade/estrutura
 import { ProximosEventosPage } from '../proximos-eventos/proximos-eventos';
 import { ContatarCoordenadorPage } from '../contatar-coordenador/contatar-coordenador';
 import { RegistrarInteracaoPage } from '../registrar-interacao/registrar-interacao';
+import { AuthServiceProvider } from '../../providers/auth-service/auth-service';
 
 /**
  * Generated class for the HomeAlunoPage page.
@@ -21,7 +22,8 @@ import { RegistrarInteracaoPage } from '../registrar-interacao/registrar-interac
 })
 export class HomeAlunoPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, 
+              public navParams: NavParams) {
   }
 
   ionViewDidLoad() {
