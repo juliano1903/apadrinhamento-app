@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import 'rxjs/add/operator/map';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Usuario } from '../../modelos/usuario';
+import { VinculoUsuarios } from '../../modelos/vinculoUsuarios';
 
 @Injectable()
 export class UsuarioServiceProvider {
@@ -25,6 +26,10 @@ export class UsuarioServiceProvider {
 
   vateranosPendentesVinculacao() {
     return this._http.get<Usuario[]>('http://localhost:8100/v1/usuario/veterano/pendentes-vinculacao');
+  }
+
+  usuariosVinculados() {
+    return this._http.get<VinculoUsuarios[]>('http://localhost:8100/v1/usuario/vinculados');
   }
 
   cadastrarAluno(usuario) {
@@ -70,7 +75,23 @@ export class UsuarioServiceProvider {
     console.log('Vincular usuarios');
     console.log(vinculoUsuarios);
     return this._http.post('http://localhost:8100/v1/usuario/vincula', vinculoUsuarios);
+  
+  }
 
+  enviarMensagemGrupo(mensagem) {
+
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type':  'application/json',
+         'Access-Control-Allow-Methods': 'POST, GET, PUT, DELETE, OPTIONS',
+         'Access-Control-Allow-Origin': 'http://localhost:8100'
+       })
+     };
+    
+    console.log('Enviar mensagem grupo');
+    console.log(mensagem);
+    return this._http.post('http://localhost:8100/v1/usuario/grupo/mensagem', mensagem);
+  
   }
 
 }
