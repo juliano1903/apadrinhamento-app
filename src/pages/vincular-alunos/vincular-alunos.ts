@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, LoadingController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, LoadingController, AlertController } from 'ionic-angular';
 import { Usuario } from '../../modelos/usuario';
 import { UsuarioServiceProvider } from '../../providers/usuario-service/usuario-service';
 import { VinculoUsuarios } from '../../modelos/vinculoUsuarios';
@@ -25,7 +25,8 @@ export class VincularAlunosPage {
   constructor(public navCtrl: NavController, 
               public navParams: NavParams,
               public _loadingCtrl: LoadingController,
-              private usuarioService: UsuarioServiceProvider) {
+              private usuarioService: UsuarioServiceProvider,
+              private __alertCtrl: AlertController) {
 
   let loading = _loadingCtrl.create({
     content: 'Carregando..'
@@ -90,6 +91,14 @@ export class VincularAlunosPage {
           loading.dismiss();
           this.vinculoUsuario.setCalouro(null);
           this.vinculoUsuario.setVeterano(null);
+          this.__alertCtrl.create({
+            title: 'Vinculo de alunos',
+            subTitle: 'Alunos vinculados com sucesso!',
+            buttons: [{
+              text: 'Ok'
+            }]
+          }).present();
+
           this.atualizarPagina();
         }
       )
