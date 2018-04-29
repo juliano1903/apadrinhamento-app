@@ -17,7 +17,7 @@ export class Usuario {
     constructor(matricula, nome, senha, dataMatricula) {
         this.matricula = matricula;
         this.nome = nome;
-        this.nome = senha;
+        this.senha = senha;
         this.dataMatricula = dataMatricula; 
     }
 

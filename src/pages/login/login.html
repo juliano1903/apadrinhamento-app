@@ -1,13 +1,16 @@
-<ion-header>
+<!--<ion-header>
 
   <ion-navbar>
     <ion-title>login</ion-title>
   </ion-navbar>
 
-</ion-header>
+</ion-header>-->
 
 
 <ion-content padding>
+  <img src="assets/imgs/logo_PUCRS.png" class="logo-img">
+
+  <div class="login-box">
   <form (ngSubmit)="efetuaLogin()">
     
     <ion-item stacked>
@@ -20,10 +23,16 @@
       <ion-input [(ngModel)]="senha" name="senha" type="password"></ion-input>
     </ion-item>
 
-    <button ion-button block type="submit">ENTRAR</button>
+    <button ion-button block type="submit">
+        <ion-icon name="log-in"></ion-icon>
+          ENTRAR
+    </button>
 
   </form>
 
-  <button ion-button color="secondary" block type="submit" (click)="selecionarCadadastro()" >CADASTRO</button>
-
+    <button ion-button color="secondary" block type="submit" (click)="selecionarCadadastro()" >
+        <ion-icon name="log-in"></ion-icon>
+          CADASTRO
+    </button>
+  </div>
 </ion-content>
