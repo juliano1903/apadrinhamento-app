@@ -1,4 +1,4 @@
-<ion-menu [content]="conteudo">
+<ion-menu [content]="conteudo" *ngIf="usuarioLogado">
     <ion-content>
         <ion-item id="cabecalho-menu" class="cabecalho-menu">
             <div>
@@ -6,8 +6,8 @@
                     <img src="assets/imgs/avatardefault.png">
             </ion-avatar>
             </div>
-            <h2>Nome</h2>
-            <p>email</p>
+            <h2>{{usuarioLogado.nome}}</h2>
+            <p>{{usuarioLogado.dsPerfil}}</p>
         </ion-item>
 
         <ion-list>
