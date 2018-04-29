@@ -6,11 +6,17 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { HomePage } from '../pages/home/home';
 import { HomeAlunoPage } from '../pages/home-aluno/home-aluno';
 import { LoginPage } from '../pages/login/login';
+import { VincularAlunosPage } from '../pages/vincular-alunos/vincular-alunos';
 @Component({
+  selector: 'myapp',
   templateUrl: 'app.html'
 })
 export class MyApp {
   rootPage:any = LoginPage;
+
+  public paginas = [
+    {titulo: 'Agendamentos', pagina: VincularAlunosPage.name, icone: 'calendar'}
+  ];
 
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen) {
     platform.ready().then(() => {
