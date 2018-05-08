@@ -4,6 +4,7 @@ export class VinculoUsuarios {
 
     usuarioCalouro: Usuario;
     usuarioVeterano: Usuario;
+    motivoDesvinculacao: string;
 
     setVeterano(usuario: Usuario) {
         this.usuarioVeterano = usuario;

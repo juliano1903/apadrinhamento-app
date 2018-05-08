@@ -46,7 +46,7 @@ export class CadastrarCalouroPage {
       content : 'Carregando...'
     })
 
-    this._cursoService.findAll()
+    this._cursoService.findById(this.usuarioLogado.idCurso)
     .subscribe(
       (cursos) => {
         this.cursosAtivos = cursos;

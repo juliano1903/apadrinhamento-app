@@ -20,4 +20,8 @@ export class CursoServiceProvider {
   findAll() {
     return this._http.get<Curso[]>('http://localhost:8100/v1/curso/');
   }
+
+  findById(idCurso) {
+    return this._http.get<Curso[]>('http://localhost:8100/v1/curso/id/'+ idCurso);
+  }
 }

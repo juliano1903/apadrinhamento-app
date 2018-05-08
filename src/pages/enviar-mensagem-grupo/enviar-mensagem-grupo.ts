@@ -4,6 +4,7 @@ import { UsuarioServiceProvider } from '../../providers/usuario-service/usuario-
 import { VinculoUsuarios } from '../../modelos/vinculoUsuarios';
 import { Mensagem } from '../../modelos/mensagem';
 import { AuthServiceProvider } from '../../providers/auth-service/auth-service';
+import { Usuario } from '../../modelos/usuario';
 
 /**
  * Generated class for the EnviarMensagemGrupoPage page.
@@ -21,6 +22,7 @@ export class EnviarMensagemGrupoPage {
 
   public usuariosVinculados: VinculoUsuarios[];
   public mensagem = new Mensagem;
+  public usuarioLogado: Usuario;
 
   constructor(public navCtrl: NavController, 
               public navParams: NavParams,
@@ -28,6 +30,8 @@ export class EnviarMensagemGrupoPage {
               private usuarioService: UsuarioServiceProvider,
               private _alertCtrl: AlertController,
               private authService: AuthServiceProvider) {
+    
+    this.usuarioLogado = authService.obtemUsuarioLogado();
 
     let loading = _loadingCtrl.create({
       content: 'Carregando..'
@@ -35,7 +39,7 @@ export class EnviarMensagemGrupoPage {
   
     loading.present();
   
-    this.usuarioService.usuariosVinculados()
+    this.usuarioService.usuariosVinculados(this.usuarioLogado.idCurso)
       .subscribe(
         (usuarios) => {
           console.log(usuarios);
@@ -47,7 +51,7 @@ export class EnviarMensagemGrupoPage {
 
   showPrompt(vinculoUsuario: VinculoUsuarios) {
 
-    this.mensagem.setUsuarioRemetente(this.authService.obtemUsuarioLogado());
+    this.mensagem.setUsuarioRemetente(this.usuarioLogado);
     
     let prompt = this._alertCtrl.create({
       title: 'Mansagem',

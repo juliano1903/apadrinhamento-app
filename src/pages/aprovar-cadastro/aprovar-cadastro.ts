@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams, Loading, LoadingController, AlertC
 import { Usuario } from '../../modelos/usuario';
 import { UsuarioServiceProvider } from '../../providers/usuario-service/usuario-service';
 import { Location } from '@angular/common';
+import { AuthServiceProvider } from '../../providers/auth-service/auth-service';
 
 @IonicPage()
 @Component({
@@ -12,12 +13,16 @@ import { Location } from '@angular/common';
 export class AprovarCadastroPage {
 
   public usuarioPendente: Usuario[];
+  public usuarioLogado: Usuario;
 
   constructor(public navCtrl: NavController,
               public _alertCtrl: AlertController,
               public navParams: NavParams, 
               private usuarioService: UsuarioServiceProvider,
-              private _loadingCtrl: LoadingController) {
+              private _loadingCtrl: LoadingController,
+              private _authService: AuthServiceProvider) {
+
+    this.usuarioLogado = _authService.obtemUsuarioLogado();
 
     let loading = _loadingCtrl.create({
       content: 'Carregando..'
@@ -25,7 +30,7 @@ export class AprovarCadastroPage {
 
     loading.present();
 
-    this.usuarioService.pendentesAceite()
+    this.usuarioService.pendentesAceite(this.usuarioLogado.idCurso)
       .subscribe(
         (usuarios) => {
           console.log(usuarios);

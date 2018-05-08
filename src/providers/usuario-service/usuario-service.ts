@@ -12,24 +12,24 @@ export class UsuarioServiceProvider {
     console.log('Hello UsuarioServiceProvider Provider');
   }
 
-  pendentesAceite() {
-    return this._http.get<Usuario[]>('http://localhost:8100/v1/usuario/pendentes-aceite');
+  pendentesAceite(idCurso) {
+    return this._http.get<Usuario[]>('http://localhost:8100/v1/usuario/pendentes-aceite/' + idCurso);
   }
 
-  pendentesVinculacao() {
-    return this._http.get<Usuario[]>('http://localhost:8100/v1/usuario/pendentes-vinculacao');
+  pendentesVinculacao(idCurso) {
+    return this._http.get<Usuario[]>('http://localhost:8100/v1/usuario/pendentes-vinculacao/' + idCurso);
   }
   
-  calourosPendentesVinculacao() {
-    return this._http.get<Usuario[]>('http://localhost:8100/v1/usuario/calouro/pendentes-vinculacao');
+  calourosPendentesVinculacao(idCurso) {
+    return this._http.get<Usuario[]>('http://localhost:8100/v1/usuario/calouro/pendentes-vinculacao/' + idCurso);
   }
 
-  vateranosPendentesVinculacao() {
-    return this._http.get<Usuario[]>('http://localhost:8100/v1/usuario/veterano/pendentes-vinculacao');
+  vateranosPendentesVinculacao(idCurso) {
+    return this._http.get<Usuario[]>('http://localhost:8100/v1/usuario/veterano/pendentes-vinculacao/' + idCurso);
   }
 
-  usuariosVinculados() {
-    return this._http.get<VinculoUsuarios[]>('http://localhost:8100/v1/usuario/vinculados');
+  usuariosVinculados(idCurso) {
+    return this._http.get<VinculoUsuarios[]>('http://localhost:8100/v1/usuario/vinculados/' + idCurso);
   }
 
   cadastrarAluno(usuario) {
@@ -75,6 +75,22 @@ export class UsuarioServiceProvider {
     console.log('Vincular usuarios');
     console.log(vinculoUsuarios);
     return this._http.post('http://localhost:8100/v1/usuario/vincula', vinculoUsuarios);
+  
+  }
+
+  desvincularAlunos(vinculoUsuarios) {
+
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type':  'application/json',
+         'Access-Control-Allow-Methods': 'POST, GET, PUT, DELETE, OPTIONS',
+         'Access-Control-Allow-Origin': 'http://localhost:8100'
+       })
+     };
+    
+    console.log('Desvincular usuarios');
+    console.log(vinculoUsuarios);
+    return this._http.post('http://localhost:8100/v1/usuario/desvincula', vinculoUsuarios);
   
   }
 

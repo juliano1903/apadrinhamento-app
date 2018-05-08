@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams, LoadingController, AlertController
 import { Usuario } from '../../modelos/usuario';
 import { UsuarioServiceProvider } from '../../providers/usuario-service/usuario-service';
 import { VinculoUsuarios } from '../../modelos/vinculoUsuarios';
+import { AuthServiceProvider } from '../../providers/auth-service/auth-service';
 
 /**
  * Generated class for the VincularAlunosPage page.
@@ -20,13 +21,17 @@ export class VincularAlunosPage {
 
   public usuarioPendente: Usuario[];
   public vinculoUsuario = new VinculoUsuarios;
+  public usuarioLogado: Usuario;
 
 
   constructor(public navCtrl: NavController, 
               public navParams: NavParams,
               public _loadingCtrl: LoadingController,
               private usuarioService: UsuarioServiceProvider,
-              private __alertCtrl: AlertController) {
+              private __alertCtrl: AlertController,
+              private authService: AuthServiceProvider) {
+
+  this.usuarioLogado = authService.obtemUsuarioLogado();
 
   let loading = _loadingCtrl.create({
     content: 'Carregando..'
@@ -34,7 +39,7 @@ export class VincularAlunosPage {
 
   loading.present();
 
-  this.usuarioService.pendentesVinculacao()
+  this.usuarioService.pendentesVinculacao(this.usuarioLogado.idCurso)
     .subscribe(
       (usuarios) => {
         console.log(usuarios);
@@ -65,7 +70,7 @@ export class VincularAlunosPage {
     if(this.vinculoUsuario.getCalouro() === undefined || this.vinculoUsuario.getVeterano() === undefined) {
 
       if(usuario.calouro) {
-        this.usuarioService.vateranosPendentesVinculacao()
+        this.usuarioService.vateranosPendentesVinculacao(this.usuarioLogado.idCurso)
         .subscribe(
           (usuarios) => {
             console.log(usuarios);
@@ -74,7 +79,7 @@ export class VincularAlunosPage {
           }
         )
       } else {
-        this.usuarioService.calourosPendentesVinculacao()
+        this.usuarioService.calourosPendentesVinculacao(this.usuarioLogado.idCurso)
         .subscribe(
           (usuarios) => {
             console.log(usuarios);
