@@ -1,38 +1,48 @@
-<!--<ion-header>
-
-  <ion-navbar>
-    <ion-title>login</ion-title>
-  </ion-navbar>
-
-</ion-header>-->
-
-
 <ion-content padding>
-  <img src="assets/imgs/logo_PUCRS.png" class="logo-img">
+  <ion-grid>
+    <ion-row>
+      <ion-col col=12 class="logo-col">
+        <img src="assets/imgs/logo_PUCRS.png" class="logo-img">
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col col-12>
+        <div class="login-box">
+          <form (ngSubmit)="efetuaLogin()">
+            <ion-row>
+              <ion-col>
 
-  <div class="login-box">
-  <form (ngSubmit)="efetuaLogin()">
-    
-    <ion-item>
-      <ion-label stacked>Matricula</ion-label>
-      <ion-input [(ngModel)]="matricula" name="matricula" type="text"></ion-input>
-    </ion-item>
+                <ion-list inset>
+                  <ion-item>
+                    <ion-label stacked>Matricula</ion-label>
+                    <ion-input [(ngModel)]="matricula" name="matricula" type="text"></ion-input>
+                  </ion-item>
 
-    <ion-item>
-      <ion-label stacked>Senha</ion-label>
-      <ion-input [(ngModel)]="senha" name="senha" type="password"></ion-input>
-    </ion-item>
+                  <ion-item>
+                    <ion-label stacked>Senha</ion-label>
+                    <ion-input [(ngModel)]="senha" name="senha" type="password"></ion-input>
+                  </ion-item>
+                </ion-list>
 
-    <button ion-button block type="submit">
-        <ion-icon name="log-in"></ion-icon>
-          ENTRAR
-    </button>
+              </ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col>
+                <button ion-button block type="submit">
+                  <ion-icon name="log-in"></ion-icon>
+                  ENTRAR
+                </button>
+              </ion-col>
+            </ion-row>
+          </form>
+            <button ion-button color="secondary" block type="submit" (click)="selecionarCadadastro()" >
+              <ion-icon name="log-in"></ion-icon>
+                CADASTRO
+            </button>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 
-  </form>
-
-    <button ion-button color="secondary" block type="submit" (click)="selecionarCadadastro()" >
-        <ion-icon name="log-in"></ion-icon>
-          CADASTRO
-    </button>
-  </div>
 </ion-content>
+
