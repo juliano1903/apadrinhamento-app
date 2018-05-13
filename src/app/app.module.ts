@@ -27,6 +27,9 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { UsuarioServiceProvider } from '../providers/usuario-service/usuario-service';
 import { CadastroPage } from '../pages/cadastro/cadastro';
 import { CursoServiceProvider } from '../providers/curso-service/curso-service';
+import { SalaPage } from '../pages/sala/sala';
+import { AdicionarSalaPage } from '../pages/adicionar-sala/adicionar-sala';
+import { EventoServiceProvider } from '../providers/evento-service/evento-service';
 
 @NgModule({
   declarations: [
@@ -49,7 +52,9 @@ import { CursoServiceProvider } from '../providers/curso-service/curso-service';
     ConsultarLogsPage,
     MarcarEncontroPage,
     LoginPage,
-    CadastroPage
+    CadastroPage,
+    SalaPage,
+    AdicionarSalaPage
   ],
   imports: [
     BrowserModule,
@@ -77,7 +82,9 @@ import { CursoServiceProvider } from '../providers/curso-service/curso-service';
     ConsultarLogsPage,
     MarcarEncontroPage,
     LoginPage,
-    CadastroPage
+    CadastroPage,
+    SalaPage,
+    AdicionarSalaPage
   ],
   providers: [
     StatusBar,
@@ -85,7 +92,8 @@ import { CursoServiceProvider } from '../providers/curso-service/curso-service';
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     AuthServiceProvider,
     UsuarioServiceProvider,
-    CursoServiceProvider
+    CursoServiceProvider,
+    EventoServiceProvider
   ]
 })
 export class AppModule {}

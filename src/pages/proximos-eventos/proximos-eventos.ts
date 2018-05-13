@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController, LoadingController } from 'ionic-angular';
+import { EventoServiceProvider } from '../../providers/evento-service/evento-service';
+import { Evento } from '../../modelos/evento';
 
 /**
  * Generated class for the ProximosEventosPage page.
@@ -15,11 +17,34 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class ProximosEventosPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  public proximosEventos: Evento[];
+
+  constructor(public navCtrl: NavController,
+              public _alertCtrl: AlertController,
+              public navParams: NavParams, 
+              private eventoService: EventoServiceProvider,
+              private _loadingCtrl: LoadingController,) {
+
+    let loading = _loadingCtrl.create({
+      content: 'Carregando..'
+    });
+
+    loading.present();
+
+    this.eventoService.proximosEventos()
+      .subscribe(
+        (eventos) => {
+          console.log(eventos);
+          this.proximosEventos = eventos;
+          loading.dismiss();
+        }
+      )
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ProximosEventosPage');
   }
+
+
 
 }

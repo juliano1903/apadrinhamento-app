@@ -8,6 +8,8 @@ import { DesvincularAlunosPage } from '../desvincular-alunos/desvincular-alunos'
 import { ConsultarLogsPage } from '../consultar-logs/consultar-logs';
 import { MarcarEncontroPage } from '../marcar-encontro/marcar-encontro';
 import { AprovarCadastroPage } from '../aprovar-cadastro/aprovar-cadastro';
+import { HomePage } from '../home/home';
+import { CadastroPage } from '../cadastro/cadastro';
 
 /**
  * Generated class for the HomeCoordenadorPage page.
@@ -55,7 +57,7 @@ export class HomeCoordenadorPage {
   }
 
   selecionaMarcarEncontro() {
-    this.navCtrl.push(MarcarEncontroPage);
+    this.navCtrl.push(CadastroPage);
   }
 
   selecionarAprovarCadastro() {

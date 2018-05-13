@@ -13,6 +13,7 @@ export class Usuario {
     dataAceite: string;
     dataNegativa: string;
     justificativaNegativa: string;
+    nickName: string;
 
     constructor(matricula, nome, senha, dataMatricula) {
         this.matricula = matricula;
