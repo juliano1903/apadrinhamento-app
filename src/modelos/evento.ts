@@ -4,5 +4,6 @@ export class Evento {
     nome: string;
     descricao: string;
     local: string;
+    duracao: string;
 
 }

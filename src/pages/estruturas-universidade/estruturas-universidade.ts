@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController, LoadingController } from 'ionic-angular';
+import { EstruturaServiceProvider } from '../../providers/estrutura-service/estrutura-service';
+import { Estrutura } from '../../modelos/estrutura';
+
 
 /**
  * Generated class for the EstruturasUniversidadePage page.
@@ -15,7 +18,30 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class EstruturasUniversidadePage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  public estruturas: Estrutura[];
+
+  constructor(public navCtrl: NavController,
+              public _alertCtrl: AlertController,
+              public navParams: NavParams, 
+              private estruturaService: EstruturaServiceProvider,
+              private _loadingCtrl: LoadingController) {
+    
+                let loading = _loadingCtrl.create({
+      content: 'Carregando..'
+    });
+
+    loading.present();
+
+    
+    this.estruturaService.estruturas()
+      .subscribe(
+        (estruturas) => {
+          console.log(estruturas);
+          this.estruturas = estruturas;
+          loading.dismiss();
+        }
+      )
+
   }
 
   ionViewDidLoad() {

@@ -30,6 +30,7 @@ import { CursoServiceProvider } from '../providers/curso-service/curso-service';
 import { SalaPage } from '../pages/sala/sala';
 import { AdicionarSalaPage } from '../pages/adicionar-sala/adicionar-sala';
 import { EventoServiceProvider } from '../providers/evento-service/evento-service';
+import { EstruturaServiceProvider } from '../providers/estrutura-service/estrutura-service';
 
 @NgModule({
   declarations: [
@@ -93,7 +94,8 @@ import { EventoServiceProvider } from '../providers/evento-service/evento-servic
     AuthServiceProvider,
     UsuarioServiceProvider,
     CursoServiceProvider,
-    EventoServiceProvider
+    EventoServiceProvider,
+    EstruturaServiceProvider
   ]
 })
 export class AppModule {}

@@ -7,12 +7,16 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>estruturasUniversidade</ion-title>
+    <ion-title>Estruturas da Universidade</ion-title>
   </ion-navbar>
 
 </ion-header>
 
-
 <ion-content padding>
-
+  <ion-list>
+    <ion-item *ngFor="let estrutura of estruturas">
+      <h2>{{estrutura.nome}}</h2>
+      <p>{{estrutura.local}}</p>
+    </ion-item>
+  </ion-list>
 </ion-content>

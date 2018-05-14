@@ -23,7 +23,7 @@ export class ProximosEventosPage {
               public _alertCtrl: AlertController,
               public navParams: NavParams, 
               private eventoService: EventoServiceProvider,
-              private _loadingCtrl: LoadingController,) {
+              private _loadingCtrl: LoadingController) {
 
     let loading = _loadingCtrl.create({
       content: 'Carregando..'

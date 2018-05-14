@@ -28,7 +28,7 @@ export class MyApp {
   rootPage:any = LoginPage;
 
   public paginas = [
-    {titulo: 'Agendamentos', pagina: VincularAlunosPage.name, icone: 'calendar'}
+    {titulo: 'Sair', pagina: VincularAlunosPage.name, icone: 'calendar'}
   ];
 
   constructor(platform: Platform, 
