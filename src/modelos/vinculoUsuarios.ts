@@ -2,9 +2,12 @@ import { Usuario } from "./usuario";
 
 export class VinculoUsuarios {
 
+    idVinculoUsuario: number;
     usuarioCalouro: Usuario;
     usuarioVeterano: Usuario;
     motivoDesvinculacao: string;
+    dataDesvinculacao: string;
+    dataVinculacao: string;
 
     setVeterano(usuario: Usuario) {
         this.usuarioVeterano = usuario;

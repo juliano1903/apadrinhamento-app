@@ -31,7 +31,7 @@ export class CadastrarCalouroPage {
 
   public cursosAtivos: Curso[];
 
-  usuarioLogado: Usuario
+  usuarioLogado: Usuario;
 
   constructor(public navCtrl: NavController, 
               public navParams: NavParams,

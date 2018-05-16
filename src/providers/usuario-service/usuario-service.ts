@@ -4,12 +4,15 @@ import 'rxjs/add/operator/map';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Usuario } from '../../modelos/usuario';
 import { VinculoUsuarios } from '../../modelos/vinculoUsuarios';
+import { AuthServiceProvider } from '../auth-service/auth-service';
 
 @Injectable()
 export class UsuarioServiceProvider {
 
-  constructor(private _http: HttpClient) {
-    console.log('Hello UsuarioServiceProvider Provider');
+  usuarioLogado: Usuario;
+
+  constructor(private _http: HttpClient, private _authService: AuthServiceProvider) {
+    this.usuarioLogado = _authService.obtemUsuarioLogado();
   }
 
   pendentesAceite(idCurso) {
@@ -30,6 +33,10 @@ export class UsuarioServiceProvider {
 
   usuariosVinculados(idCurso) {
     return this._http.get<VinculoUsuarios[]>('http://localhost:8100/v1/usuario/vinculados/' + idCurso);
+  }
+
+  vinculoUsuario() {
+    return this._http.get<VinculoUsuarios>('http://localhost:8100/v1/usuario/vinculo-usuario/' + this.usuarioLogado.idUsuario);
   }
 
   cadastrarAluno(usuario) {

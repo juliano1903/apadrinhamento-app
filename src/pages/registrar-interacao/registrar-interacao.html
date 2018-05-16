@@ -7,12 +7,45 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>registrarInteracao</ion-title>
+    <ion-title>Registrar Interacao</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
-<ion-content padding>
-
+<ion-content padding="">
+  <form (ngSubmit)="registrarInteracao()">
+    <ion-list>
+      <ion-item>
+        <ion-label stacked>Título da interação</ion-label>
+        <ion-input type="text" [(ngModel)]="data.titulo" name="titulo" required=""></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label stacked>Descrição</ion-label>
+        <ion-textarea [(ngModel)]="data.descricao" name="nome" required=""></ion-textarea>
+      </ion-item>
+      <ion-item>
+        <ion-label>Horario</ion-label>
+        <ion-datetime displayFormat="MM/YYYY HH:mm" pickerFormat="MMMM YYYY HH:mm" name="data" [(ngModel)]="data.myDate"></ion-datetime>
+      </ion-item>
+      
+      <ion-item>
+        <ion-label>Participantes</ion-label>
+      </ion-item>
+      <ion-list>
+        <ion-item>
+          <ion-label>Coordenador</ion-label>
+          <ion-checkbox [(ngModel)]="data.coordenador" name="coordenador" (ionChange)="updateCucumber()"></ion-checkbox>
+        </ion-item>
+      <ion-item>        
+        <ion-label>{{alunoParticipante}}</ion-label>
+          <ion-checkbox [(ngModel)]="data.aluno" name="aluno" (ionChange)="updateCucumber()"></ion-checkbox>
+        </ion-item>
+      </ion-list>
+      
+      <ion-item>
+        <button ion-button="" full="" round="" color="secondary" type="submit">Adicionar</button>
+      </ion-item>
+    </ion-list>
+  </form>
 </ion-content>
