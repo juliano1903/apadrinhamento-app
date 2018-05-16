@@ -42,18 +42,30 @@ export class CadastrarCalouroPage {
 
     this.usuarioLogado = _authService.obtemUsuarioLogado();
 
+    
     let loading = _loadingCtrl.create({
       content : 'Carregando...'
     })
 
-    this._cursoService.findById(this.usuarioLogado.idCurso)
-    .subscribe(
-      (cursos) => {
-        this.cursosAtivos = cursos;
-        console.log(this.cursosAtivos);
-        loading.dismiss();
-      }
-    )
+    if (this.usuarioLogado) {
+      this._cursoService.findById(this.usuarioLogado.idCurso)
+      .subscribe(
+        (cursos) => {
+          this.cursosAtivos = cursos;
+          console.log(this.cursosAtivos);
+          loading.dismiss();
+        }
+      )
+    } else {
+      this._cursoService.findAll()
+      .subscribe(
+        (cursos) => {
+          this.cursosAtivos = cursos;
+          console.log(this.cursosAtivos);
+          loading.dismiss();
+        }
+      )
+    }
   }
 
   ionViewDidLoad() {
