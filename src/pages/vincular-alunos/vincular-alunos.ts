@@ -20,7 +20,7 @@ import { AuthServiceProvider } from '../../providers/auth-service/auth-service';
 export class VincularAlunosPage {
 
   public usuarioPendente: Usuario[];
-  public vinculoUsuario = new VinculoUsuarios;
+  public vinculoUsuario = new VinculoUsuarios();
   public usuarioLogado: Usuario;
 
 

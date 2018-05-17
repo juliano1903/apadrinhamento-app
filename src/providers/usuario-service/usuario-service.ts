@@ -39,6 +39,24 @@ export class UsuarioServiceProvider {
     return this._http.get<VinculoUsuarios>('http://localhost:8100/v1/usuario/vinculo-usuario/' + this.usuarioLogado.idUsuario);
   }
 
+  registrarInteracao(interacao) {
+
+    
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type':  'application/json',
+         'Access-Control-Allow-Methods': 'POST, GET, PUT, DELETE, OPTIONS',
+         'Access-Control-Allow-Origin': 'http://localhost:8100',
+         'x-access-token': 'teste'
+       })
+     };
+
+     console.log(interacao);
+
+     return this._http.post('http://localhost:8100/v1/usuario/interacao/salva', interacao, httpOptions);
+    
+  }
+
   cadastrarAluno(usuario) {
 
     const httpOptions = {

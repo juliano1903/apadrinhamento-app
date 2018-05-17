@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
 import { UsuarioServiceProvider } from '../../providers/usuario-service/usuario-service';
 import { VinculoUsuarios } from '../../modelos/vinculoUsuarios';
 import { Usuario } from '../../modelos/usuario';
 import { AuthServiceProvider } from '../../providers/auth-service/auth-service';
+import { Interacao } from '../../modelos/interacao';
 
 /**
  * Generated class for the RegistrarInteracaoPage page.
@@ -19,7 +20,7 @@ import { AuthServiceProvider } from '../../providers/auth-service/auth-service';
 })
 export class RegistrarInteracaoPage {
 
-  data = { titulo:'', descricao:'', myDate: '', coordenador: false, aluno: false };
+  data = { titulo:'', descricao:'', dataInteracao: '', coordenador: false, aluno: false };
 
   public vinculoUsuario: VinculoUsuarios;
   public usuarioLogado: Usuario;
@@ -29,13 +30,14 @@ export class RegistrarInteracaoPage {
   constructor(public navCtrl: NavController, 
               public navParams: NavParams, 
               private usuarioService: UsuarioServiceProvider,
-              private _authService: AuthServiceProvider) {
+              private _authService: AuthServiceProvider,
+              private _alertCtrl: AlertController) {
 
     this.usuarioLogado = _authService.obtemUsuarioLogado();
     this.usuarioService.vinculoUsuario()
       .subscribe(
         (vinculo) => {
-          this.vinculoUsuario = vinculo;
+          this.vinculoUsuario = JSON.parse(JSON.stringify(vinculo));
           if (this.usuarioLogado.calouro) {
             this.alunoParticipante = vinculo.usuarioVeterano.nome;
           } else {
@@ -50,7 +52,28 @@ export class RegistrarInteracaoPage {
   }
 
   registrarInteracao() {
-    console.log(this.data);
+
+    var interacao = new Interacao();
+    interacao.titulo = this.data.titulo;
+    interacao.descricao = this.data.descricao;
+    interacao.data = this.data.dataInteracao;
+    interacao.coordenador = this.data.coordenador;
+
+    interacao.preencher(this.vinculoUsuario);
+
+    this.usuarioService.registrarInteracao(interacao)
+    .subscribe(
+      (interacao) => {
+        this._alertCtrl.create({
+          title: 'Interação',
+          subTitle: 'Interação regitrada com sucesso!',
+          buttons: [{
+            text: 'Ok'
+          }]
+        }).present();
+      }
+    )
+
     this.navCtrl.pop();
   }
 
