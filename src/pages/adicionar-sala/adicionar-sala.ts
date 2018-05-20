@@ -21,5 +21,4 @@ export class AdicionarSalaPage {
     });
     this.navCtrl.pop();
   }
- 
 }

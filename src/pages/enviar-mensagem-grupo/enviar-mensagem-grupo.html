@@ -18,7 +18,7 @@
     <ion-item *ngFor="let usuario of usuariosVinculados">
       <h2>{{usuario.usuarioCalouro.nome}}</h2>
       <h2>{{usuario.usuarioVeterano.nome}}</h2>
-      <button ion-button color="danger" round (click)="showPrompt(usuario)">Mensagem</button>
+      <button ion-button color="danger" round (click)="acessarSala(usuario.keySalaChat)">Mensagem</button>
     </ion-item>
   </ion-list>
 </ion-content>

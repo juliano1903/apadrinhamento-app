@@ -5,6 +5,8 @@ import { VinculoUsuarios } from '../../modelos/vinculoUsuarios';
 import { Mensagem } from '../../modelos/mensagem';
 import { AuthServiceProvider } from '../../providers/auth-service/auth-service';
 import { Usuario } from '../../modelos/usuario';
+import { HomePage } from '../home/home';
+
 
 /**
  * Generated class for the EnviarMensagemGrupoPage page.
@@ -47,6 +49,13 @@ export class EnviarMensagemGrupoPage {
           loading.dismiss();
         }
       )
+  }
+
+  acessarSala(keySalaChat) {
+    this.navCtrl.setRoot(HomePage, {
+      key: keySalaChat,
+      nickname: this.usuarioLogado.nome
+    });
   }
 
   showPrompt(vinculoUsuario: VinculoUsuarios) {

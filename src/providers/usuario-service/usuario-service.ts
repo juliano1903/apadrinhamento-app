@@ -5,11 +5,16 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Usuario } from '../../modelos/usuario';
 import { VinculoUsuarios } from '../../modelos/vinculoUsuarios';
 import { AuthServiceProvider } from '../auth-service/auth-service';
+import * as firebase from 'Firebase';
+
 
 @Injectable()
 export class UsuarioServiceProvider {
 
   usuarioLogado: Usuario;
+  
+  data = { nome:'' };
+  ref = firebase.database().ref('salas/');
 
   constructor(private _http: HttpClient, private _authService: AuthServiceProvider) {
     this.usuarioLogado = _authService.obtemUsuarioLogado();
@@ -135,4 +140,14 @@ export class UsuarioServiceProvider {
   
   }
 
+  adicionarSala(nomeSala) {
+    let newData = this.ref.push();
+    
+    console.log(newData.key);
+
+    newData.set({
+      nome: nomeSala
+    });
+    return newData;
+  }
 }

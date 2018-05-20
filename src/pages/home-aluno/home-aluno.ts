@@ -7,6 +7,8 @@ import { ProximosEventosPage } from '../proximos-eventos/proximos-eventos';
 import { ContatarCoordenadorPage } from '../contatar-coordenador/contatar-coordenador';
 import { RegistrarInteracaoPage } from '../registrar-interacao/registrar-interacao';
 import { AuthServiceProvider } from '../../providers/auth-service/auth-service';
+import { EnviarMensagemGrupoPage } from '../enviar-mensagem-grupo/enviar-mensagem-grupo';
+
 
 /**
  * Generated class for the HomeAlunoPage page.
@@ -52,6 +54,10 @@ export class HomeAlunoPage {
 
   selecionaMarcarEncontro() {
     this.navCtrl.push(MarcarEncontroPage);
+  }
+
+  selecionarEnviarMensagemGrupo() {
+    this.navCtrl.push(EnviarMensagemGrupoPage);
   }
 
 }

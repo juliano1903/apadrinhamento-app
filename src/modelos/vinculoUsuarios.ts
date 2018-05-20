@@ -8,6 +8,8 @@ export class VinculoUsuarios {
     motivoDesvinculacao: string;
     dataDesvinculacao: string;
     dataVinculacao: string;
+    nomeSalaChat: string;
+    keySalaChat: string;
 
     setVeterano(usuario: Usuario) {
         this.usuarioVeterano = usuario;

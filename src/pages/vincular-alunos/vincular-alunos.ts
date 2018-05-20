@@ -89,6 +89,14 @@ export class VincularAlunosPage {
         )
       }
     } else {
+
+      let nomeSala = this.vinculoUsuario.getCalouro().matricula + '/' + this.vinculoUsuario.getVeterano().matricula;
+
+      let sala = this.usuarioService.adicionarSala(nomeSala);
+      
+      this.vinculoUsuario.nomeSalaChat = nomeSala;
+      this.vinculoUsuario.keySalaChat = sala.key;
+
       this.usuarioService.vincularAlunos(this.vinculoUsuario)
       .subscribe(
         (usuariosVinculados) => {
@@ -103,7 +111,6 @@ export class VincularAlunosPage {
               text: 'Ok'
             }]
           }).present();
-
           this.atualizarPagina();
         }
       )

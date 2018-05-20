@@ -41,6 +41,7 @@ export const snapshotToArray = snapshot => {
   snapshot.forEach(childSnapshot => {
       let item = childSnapshot.val();
       item.key = childSnapshot.key;
+      console.log(item);
       returnArr.push(item);
   });
  
