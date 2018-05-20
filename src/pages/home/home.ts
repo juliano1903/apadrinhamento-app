@@ -2,6 +2,10 @@ import { Component, ViewChild } from '@angular/core';
 import { NavController, NavParams, Content } from 'ionic-angular';
 import { SalaPage } from '../sala/sala';
 import * as firebase from 'Firebase';
+import { Usuario } from '../../modelos/usuario';
+import { AuthServiceProvider } from '../../providers/auth-service/auth-service';
+import { HomeCoordenadorPage } from '../home-coordenador/home-coordenador';
+import { HomeAlunoPage } from '../home-aluno/home-aluno';
  
 @Component({
   selector: 'page-home',
@@ -14,21 +18,27 @@ export class HomePage {
   key:string;
   nickname:string;
   offStatus:boolean = false;
+  usuarioLogado: Usuario;
  
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, 
+              public navParams: NavParams,
+              private _authService: AuthServiceProvider) {
+    
+    this.usuarioLogado = _authService.obtemUsuarioLogado();
+
     this.key = this.navParams.get("key") as string;
     this.nickname = this.navParams.get("nickname") as string;
     this.data.type = 'mensagem';
     this.data.nickname = this.nickname;
    
-    let joinData = firebase.database().ref('salas/'+this.key+'/chats').push();
-    joinData.set({
-      type:'join',
-      user:this.nickname,
-      mensagem:this.nickname+' entrou na sala',
-      sendDate:Date()
-    });
-    this.data.mensagem = '';
+    //let joinData = firebase.database().ref('salas/'+this.key+'/chats').push();
+    //joinData.set({
+   //   type:'join',
+    //  user:this.nickname,
+    //  mensagem:this.nickname+' entrou na sala',
+    //  sendDate:Date()
+   // });
+   // this.data.mensagem = '';
    
     firebase.database().ref('salas/'+this.key+'/chats').on('value', resp => {
       this.chats = [];
@@ -53,21 +63,26 @@ export class HomePage {
   }
  
   sair() {
-    let exitData = firebase.database().ref('salas/'+this.key+'/chats').push();
-    exitData.set({
-      type:'sair',
-      user:this.nickname,
-      message:this.nickname+' saiu da sala de chat.',
-      sendDate:Date()
-    });
+    //let exitData = firebase.database().ref('salas/'+this.key+'/chats').push();
+    //exitData.set({
+    //  type:'sair',
+    //  user:this.nickname,
+    //  message:this.nickname+' saiu da sala de chat.',
+    //  sendDate:Date()
+    //});
    
     this.offStatus = true;
    
-    this.navCtrl.setRoot(SalaPage, {
-      nickname:this.nickname
-    });
+    if(this.usuarioLogado.idTipoUsuario == 1) {
+      this.navCtrl.setRoot(HomeAlunoPage, {
+        nickname:this.nickname
+      });
+    } else {
+      this.navCtrl.setRoot(HomeCoordenadorPage, {
+        nickname:this.nickname
+      });
+    }
   }
- 
 }
  
 export const snapshotToArray = snapshot => {

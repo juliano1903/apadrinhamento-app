@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { Platform } from 'ionic-angular';
+import { Component, ViewChild } from '@angular/core';
+import { Platform, Nav } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
@@ -26,9 +26,10 @@ const config = {
 export class MyApp {
   
   rootPage:any = LoginPage;
+  @ViewChild(Nav) public nav: Nav;
 
   public paginas = [
-    {titulo: 'Sair', pagina: VincularAlunosPage.name, icone: 'calendar'}
+    {titulo: 'Sair', componente: LoginPage.name, icone: 'calendar'}
   ];
 
   constructor(platform: Platform, 
@@ -43,6 +44,10 @@ export class MyApp {
       splashScreen.hide();
     });
     firebase.initializeApp(config);
+  }
+
+  irParaPagina(componente) {
+    this.nav.push(componente);
   }
 
   get usuarioLogado () {

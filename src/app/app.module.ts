@@ -31,6 +31,7 @@ import { SalaPage } from '../pages/sala/sala';
 import { AdicionarSalaPage } from '../pages/adicionar-sala/adicionar-sala';
 import { EventoServiceProvider } from '../providers/evento-service/evento-service';
 import { EstruturaServiceProvider } from '../providers/estrutura-service/estrutura-service';
+import { LoginPageModule } from '../pages/login/login.module';
 
 @NgModule({
   declarations: [
@@ -52,7 +53,6 @@ import { EstruturaServiceProvider } from '../providers/estrutura-service/estrutu
     DesvincularAlunosPage,
     ConsultarLogsPage,
     MarcarEncontroPage,
-    LoginPage,
     CadastroPage,
     SalaPage,
     AdicionarSalaPage
@@ -60,7 +60,8 @@ import { EstruturaServiceProvider } from '../providers/estrutura-service/estrutu
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
-    HttpClientModule
+    HttpClientModule,
+    LoginPageModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
