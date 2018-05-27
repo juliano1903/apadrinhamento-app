@@ -47,7 +47,7 @@ export class CadastrarCalouroPage {
       content : 'Carregando...'
     })
 
-    if (this.usuarioLogado) {
+    if (this._authService.isLogged()) {
       this._cursoService.findById(this.usuarioLogado.idCurso)
       .subscribe(
         (cursos) => {
@@ -90,11 +90,7 @@ export class CadastrarCalouroPage {
         (usuario: Usuario) => {
           console.log(usuario);
           if(!this.usuarioLogado || this.usuarioLogado.idTipoUsuario == 1) {
-            if(usuario.dataAceite != null) {
-              this.navCtrl.setRoot(HomeAlunoPage);
-            } else {
-              this.navCtrl.setRoot(LoginPage);
-            }
+            this.navCtrl.setRoot(LoginPage);
           } else {
             this.atualizarPagina();
           }

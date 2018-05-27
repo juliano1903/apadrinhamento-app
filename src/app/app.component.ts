@@ -29,7 +29,7 @@ export class MyApp {
   @ViewChild(Nav) public nav: Nav;
 
   public paginas = [
-    {titulo: 'Sair', componente: LoginPage.name, icone: 'calendar'}
+    {titulo: 'Sair', componente: LoginPage.name, icone: 'md-exit'}
   ];
 
   constructor(platform: Platform, 

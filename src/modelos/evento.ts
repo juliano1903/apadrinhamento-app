@@ -5,5 +5,6 @@ export class Evento {
     descricao: string;
     local: string;
     duracao: string;
+    dataEventoString: string;
 
 }

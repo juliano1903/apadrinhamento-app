@@ -57,7 +57,7 @@ export class HomeCoordenadorPage {
   }
 
   selecionaMarcarEncontro() {
-    this.navCtrl.push(CadastroPage);
+    this.navCtrl.push(MarcarEncontroPage);
   }
 
   selecionarAprovarCadastro() {

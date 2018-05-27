@@ -45,6 +45,7 @@ export class ProximosEventosPage {
     console.log('ionViewDidLoad ProximosEventosPage');
   }
 
-
-
+  dataEmString(data) {
+    return data;
+  }
 }

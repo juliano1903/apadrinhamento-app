@@ -20,6 +20,7 @@ export class LoginPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams, 
               private _authService: AuthServiceProvider, private _alertCtrl: AlertController) {
+    _authService.logout();                
   }
 
   efetuaLogin() {
@@ -51,7 +52,7 @@ export class LoginPage {
   }
 
   selecionarCadadastro() {
-    this.navCtrl.setRoot(CadastrarCalouroPage);
+    this.navCtrl.push(CadastrarCalouroPage);
   }
 
 }

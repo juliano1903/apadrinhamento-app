@@ -11,7 +11,14 @@
   <ion-list>
     <ion-item *ngFor="let evento of proximosEventos">
       <h2>{{evento.nome}}</h2>
-      <p>{{evento.local}}</p>
+      <ion-item no-lines>
+        <ion-icon no-lines item-start small name="md-pin"></ion-icon>   
+        <p>{{evento.local}}</p> 
+      </ion-item>
+      <ion-item small no-lines>
+        <ion-icon item-start small name="md-calendar"></ion-icon>
+        <p>{{evento.dataEventoString}}</p> 
+      </ion-item>
     </ion-item>
   </ion-list>
 </ion-content>

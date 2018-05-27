@@ -8,6 +8,10 @@ import { ContatarCoordenadorPage } from '../contatar-coordenador/contatar-coorde
 import { RegistrarInteracaoPage } from '../registrar-interacao/registrar-interacao';
 import { AuthServiceProvider } from '../../providers/auth-service/auth-service';
 import { EnviarMensagemGrupoPage } from '../enviar-mensagem-grupo/enviar-mensagem-grupo';
+import { Usuario } from '../../modelos/usuario';
+import { auth } from 'Firebase';
+import { UsuarioServiceProvider } from '../../providers/usuario-service/usuario-service';
+import { HomePage } from '../home/home';
 
 
 /**
@@ -24,8 +28,14 @@ import { EnviarMensagemGrupoPage } from '../enviar-mensagem-grupo/enviar-mensage
 })
 export class HomeAlunoPage {
 
+  usuarioLogado: Usuario;
+
   constructor(public navCtrl: NavController, 
-              public navParams: NavParams) {
+              public navParams: NavParams,
+              private _authService: AuthServiceProvider,
+              private usuarioService: UsuarioServiceProvider) {
+  
+    this.usuarioLogado = _authService.obtemUsuarioLogado();
   }
 
   ionViewDidLoad() {
@@ -57,7 +67,25 @@ export class HomeAlunoPage {
   }
 
   selecionarEnviarMensagemGrupo() {
-    this.navCtrl.push(EnviarMensagemGrupoPage);
+    if(this.usuarioLogado.idTipoUsuario == 1) {
+      this.usuarioService.vinculoUsuario()
+      .subscribe(
+        (usuarios) => {
+          console.log(usuarios);
+          debugger;
+          this.acessarSala(usuarios.keySalaChat);
+        }
+      )
+    } else {
+      this.navCtrl.push(EnviarMensagemGrupoPage);
+    }
+  }
+
+  acessarSala(keySalaChat) {
+    this.navCtrl.setRoot(HomePage, {
+      key: keySalaChat,
+      nickname: this.usuarioLogado.nome
+    });
   }
 
 }

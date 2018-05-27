@@ -9,12 +9,14 @@ import { Usuario } from '../../modelos/usuario';
 export class AuthServiceProvider {
 
   private _usuarioLogado: Usuario;
+  private logado: boolean;
 
   constructor(private _http: HttpClient) {
   }
 
   efetuaLogin(usuarioLogin) {
       console.log('Login: ' + usuarioLogin.nome);
+      this.logado = true;
       return this._http.post('http://localhost:8100/v1/usuario/login', usuarioLogin)
       .do((usuario: Usuario) => this._usuarioLogado = usuario);
   }
@@ -23,4 +25,12 @@ export class AuthServiceProvider {
     return this._usuarioLogado;
   }
 
+  logout() {
+    this.logado = false;
+  }
+
+  isLogged() {
+    debugger;
+    return this.logado;
+  }
 }
