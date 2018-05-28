@@ -16,6 +16,9 @@
 <ion-content padding>
   <ion-list>
     <ion-item *ngFor="let usuario of usuarioPendente">
+      <ion-avatar small item-start>
+        <img src="assets/imgs/avatardefault.png">
+      </ion-avatar>
       <h2>{{usuario.nome}}</h2>
       <p>{{usuario.dsPerfil}}</p>
       <button ion-button round (click)="aprovarCadastro(usuario)">Aprovar</button>
