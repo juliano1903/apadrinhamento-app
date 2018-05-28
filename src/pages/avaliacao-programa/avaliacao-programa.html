@@ -14,5 +14,31 @@
 
 
 <ion-content padding>
+  
+  <ion-item>
+    <ion-label stacked>Avaliação</ion-label>
+  </ion-item>
+  
+  <ion-item>
+    <rating [(ngModel)]="rate" 
+      readOnly="false"
+      max="5" 
+      emptyStarIconName="star-outline" 
+      halfStarIconName="star-half"
+      starIconName="star"
+      nullable="false" 
+      (ngModelChange)="onModelChange($event)"> 
+    </rating>
+  </ion-item>
 
+  <form (ngSubmit)="salvarAvaliacao()">
+      <ion-item>
+          <ion-label stacked>Observação</ion-label>
+          <ion-textarea [(ngModel)]="data.observacao" name="nome" required=""></ion-textarea>
+      </ion-item>
+
+      <ion-item>
+        <button ion-button="" full="" round="" color="secondary" type="submit">Salvar</button>
+      </ion-item>
+  </form>
 </ion-content>

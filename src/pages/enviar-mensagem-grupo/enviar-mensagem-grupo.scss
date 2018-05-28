@@ -1,3 +1,13 @@
 page-enviar-mensagem-grupo {
 
+    ion-avatar {
+        margin: 0px 0px 0px 0px !important;
+    }
+    
+    ion-avatar img  {
+        width: 100% !important;
+        height : 100% !important;
+        max-width: 35px !important;  //any size
+        max-height: 100px !important; //any size
+    }
 }

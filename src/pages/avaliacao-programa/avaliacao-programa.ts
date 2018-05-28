@@ -1,5 +1,10 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController, LoadingController } from 'ionic-angular';
+import { Ionic2RatingModule } from "ionic2-rating";
+import { UsuarioServiceProvider } from '../../providers/usuario-service/usuario-service';
+import { HomeAlunoPage } from '../home-aluno/home-aluno';
+import { Avaliacao } from '../../modelos/avaliacao';
+
 
 /**
  * Generated class for the AvaliacaoProgramaPage page.
@@ -15,7 +20,33 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class AvaliacaoProgramaPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  avaliacao: Avaliacao;
+  data = {observacao: ''};
+
+  constructor(public navCtrl: NavController,
+              public navParams: NavParams,
+              public alertCtrl: AlertController,
+              public usuarioService: UsuarioServiceProvider,
+              public _loadingCtrl: LoadingController) {
+  }
+
+  onModelChange(data) {
+    this.avaliacao.avaliacao = data;
+  }
+
+  salvarAvaliacao() {
+
+    let loading = this._loadingCtrl.create({
+      content : 'salvando...'
+    })
+
+    this.usuarioService.salvarAvaliacao(this.avaliacao)
+    .subscribe(
+      (avaliacao) => {
+        this.navCtrl.setRoot(HomeAlunoPage);
+        loading.dismiss();
+      }
+    )
   }
 
   ionViewDidLoad() {

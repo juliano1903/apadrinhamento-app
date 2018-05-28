@@ -28,10 +28,12 @@ import { UsuarioServiceProvider } from '../providers/usuario-service/usuario-ser
 import { CadastroPage } from '../pages/cadastro/cadastro';
 import { CursoServiceProvider } from '../providers/curso-service/curso-service';
 import { SalaPage } from '../pages/sala/sala';
+import { LogListPage } from '../pages/log-list/log-list';
 import { AdicionarSalaPage } from '../pages/adicionar-sala/adicionar-sala';
 import { EventoServiceProvider } from '../providers/evento-service/evento-service';
 import { EstruturaServiceProvider } from '../providers/estrutura-service/estrutura-service';
 import { LoginPageModule } from '../pages/login/login.module';
+import { Ionic2RatingModule } from 'ionic2-rating';
 
 @NgModule({
   declarations: [
@@ -55,13 +57,15 @@ import { LoginPageModule } from '../pages/login/login.module';
     MarcarEncontroPage,
     CadastroPage,
     SalaPage,
-    AdicionarSalaPage
+    AdicionarSalaPage,
+    LogListPage
   ],
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
     HttpClientModule,
-    LoginPageModule
+    LoginPageModule,
+    Ionic2RatingModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -86,7 +90,8 @@ import { LoginPageModule } from '../pages/login/login.module';
     LoginPage,
     CadastroPage,
     SalaPage,
-    AdicionarSalaPage
+    AdicionarSalaPage,
+    LogListPage
   ],
   providers: [
     StatusBar,

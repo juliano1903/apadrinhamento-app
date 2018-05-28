@@ -6,6 +6,7 @@ import { Usuario } from '../../modelos/usuario';
 import { VinculoUsuarios } from '../../modelos/vinculoUsuarios';
 import { AuthServiceProvider } from '../auth-service/auth-service';
 import * as firebase from 'Firebase';
+import { Interacao } from '../../modelos/interacao';
 
 
 @Injectable()
@@ -44,6 +45,14 @@ export class UsuarioServiceProvider {
     return this._http.get<VinculoUsuarios>('http://localhost:8100/v1/usuario/vinculo-usuario/' + this.usuarioLogado.idUsuario);
   }
 
+  buscaInteracoes(vinculoUsuario: VinculoUsuarios) {
+
+    let idVeterano = vinculoUsuario.usuarioVeterano.idUsuario;
+    let idCalouro = vinculoUsuario.usuarioCalouro.idUsuario;
+
+    return this._http.get<Interacao[]>('http://localhost:8100/v1/usuario/interacao/' + idVeterano +'/'+ idCalouro +'/');
+  }
+
   registrarInteracao(interacao) {
 
     
@@ -58,7 +67,7 @@ export class UsuarioServiceProvider {
 
      console.log(interacao);
 
-     return this._http.post('http://localhost:8100/v1/usuario/interacao/salva', interacao, httpOptions);
+     return this._http.post('http://localhost:8100/v1/interacao/salva', interacao, httpOptions);
     
   }
 
@@ -74,6 +83,24 @@ export class UsuarioServiceProvider {
     };
 
     return this._http.post('http://localhost:8100/v1/usuario/salva', usuario, httpOptions);
+  }
+
+  salvarAvaliacao(avaliacao) {
+
+    avaliacao.usuario = this.usuarioLogado;
+
+    console.log(avaliacao);
+
+    const httpOptions = {
+     headers: new HttpHeaders({
+       'Content-Type':  'application/json',
+        'Access-Control-Allow-Methods': 'POST, GET, PUT, DELETE, OPTIONS',
+        'Access-Control-Allow-Origin': 'http://localhost:8100',
+        'x-access-token': 'teste'
+      })
+    };
+
+    return this._http.post('http://localhost:8100/v1/usuario/avaliacao/salva', avaliacao, httpOptions);
   }
 
   aprovarCadastro(usuario) {

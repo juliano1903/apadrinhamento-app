@@ -20,7 +20,7 @@ import { Interacao } from '../../modelos/interacao';
 })
 export class RegistrarInteracaoPage {
 
-  data = { titulo:'', descricao:'', dataInteracao: '', coordenador: false, aluno: false };
+  data = { titulo:'', descricao:'', dataInteracao: new Date().toISOString(), coordenador: false, aluno: false };
 
   public vinculoUsuario: VinculoUsuarios;
   public usuarioLogado: Usuario;
@@ -65,7 +65,7 @@ export class RegistrarInteracaoPage {
     .subscribe(
       (interacao) => {
         this._alertCtrl.create({
-          title: 'Interação',
+          title: 'Informação',
           subTitle: 'Interação regitrada com sucesso!',
           buttons: [{
             text: 'Ok'
