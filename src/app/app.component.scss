@@ -1,11 +1,48 @@
 myapp {
-    #cabecalho-menu .item-inner {
-        border: none;
+    $SIDEMENU_TOP: #00B69F;
+    $SIDEMENU_BOTTOM: #0076A8;
+    $SIDEMENU_TRANSPARENCY: rgba(255,255,255,0.4);
+
+    .toolbar-background {
+        background:darkcyan;
     }
+
+    .toolbar-title-md {
+        color: #f2ebeb !important;
+        font-family: Helvetica, Arial, sans-serif
+    }
+
+    .bar-button-default-md {
+        color: #f2ebeb !important;        
+    }
+
+    #cabecalho-menu {
+        .item-inner {
+            border: none;
+        }
+    }
+
+    .list-menu .label {
+        color: #f2ebeb;
+    }
+
+    .icon {
+        color: #f2ebeb;    
+    }
+
+    ion-menu .scroll-content {
+        font-family: Helvetica, Arial, sans-serif !important;
+        background: -webkit-gradient(left top, $SIDEMENU_TOP, $SIDEMENU_BOTTOM);
+        background: -o-linear-gradient(bottom right, $SIDEMENU_TOP, $SIDEMENU_BOTTOM);
+        background: -moz-linear-gradient(bottom right, $SIDEMENU_TOP, $SIDEMENU_BOTTOM);
+        background: linear-gradient(to bottom right, $SIDEMENU_TOP, $SIDEMENU_BOTTOM);
+
+        .item-block {
+            background: transparent;
+        }
+    }
+
     .cabecalho-menu {
-        background-image: url('../assets/imgs/material-design-background.jpg');
-        height: 150px;
-        margin-bottom: 10px;
 
         ion-avatar img {
             width: 50px;

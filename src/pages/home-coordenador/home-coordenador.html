@@ -17,14 +17,47 @@
 
 
 <ion-content padding>
-  <ion-list>
-    <ion-item (click)="selecionarAprovarCadastro()">Aprovar cadastro</ion-item>
-    <ion-item (click)="selecionarCadastrarCalouro()">Cadastrar aluno</ion-item>
-    <ion-item (click)="selecionarDescadastrarAluno()">Descadastar aluno</ion-item>
-    <ion-item (click)="selecionarEnviarMensagemGrupo()">Enviar mensagem grupo</ion-item>
-    <ion-item (click)="selecionarVincularAlunos()">Vincular alunos</ion-item>
-    <ion-item (click)="selecionarDesvincularAlunos()">Desvincular alunos</ion-item>
-    <ion-item (click)="selecionarConsultarLogs()">Consultar logs</ion-item>
-    <ion-item (click)="selecionaMarcarEncontro()">Marcar encontro</ion-item>
-  </ion-list>
+
+    <ion-grid text-center>
+        <ion-row>
+          <ion-col  (click)="selecionarAprovarCadastro()" class="grid2" width-50 height-50>
+            <ion-icon ios="ios-checkbox-outline" md="md-checkbox-outline"></ion-icon>
+            <p>Aprovar</p>
+          </ion-col>
+          <ion-col class="grid2" width-50 (click)="selecionarCadastrarCalouro()" >
+              <ion-icon ios="ios-person-add" md="md-person-add"></ion-icon>
+            <p>Cadastrar</p>
+          </ion-col>
+        </ion-row>  
+        <ion-row>
+            <ion-col  (click)="selecionarEnviarMensagemGrupo()" class="grid2" width-50 height-50>
+              <ion-icon ios="ios-chatboxes" md="md-chatboxes"></ion-icon>
+              <p>Mensagem</p>
+            </ion-col>
+            <ion-col (click)="selecionarVincularAlunos()" class="grid2" width-50>   
+              <ion-icon ios="ios-people" md="md-people"></ion-icon>
+              <p>Vincular</p>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+              <ion-col (click)="selecionarDesvincularAlunos()" class="grid2" width-50 height-50>
+                <ion-icon ios="ios-contact" md="md-contact"></ion-icon>
+                <p>Desvincular</p>
+              </ion-col>
+              <ion-col  (click)="selecionarConsultarLogs()" class="grid2" width-50>   
+                <ion-icon ios="ios-archive" md="md-archive"></ion-icon>
+                <p>Logs</p>
+              </ion-col>
+          </ion-row>
+          <ion-row>
+              <ion-col (click)="selecionaMarcarEncontro()" class="grid2" width-50 height-50>
+                <ion-icon ios="ios-people" md="md-people"></ion-icon>
+                <p>Encontro</p>
+              </ion-col>
+              <ion-col (click)="selecionarDescadastrarAluno()" class="grid2" width-50 height-50>
+                <ion-icon ios="ios-remove-circle" md="md-remove-circle"></ion-icon>
+                <p>Descadastrar</p>
+              </ion-col>
+          </ion-row>   
+    </ion-grid>
 </ion-content>

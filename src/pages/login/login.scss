@@ -1,5 +1,9 @@
-page-login {
+page-login { 
     
+    $SIDEMENU_TOP: #00B69F;
+    $SIDEMENU_BOTTOM: #009E82;
+    $SIDEMENU_TRANSPARENCY: rgba(255,255,255,0.4);
+
     .splash-logo {
         background: url('../assets/imgs/pucrs.jpg') transparent;
         background-size: 40%;

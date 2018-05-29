@@ -1,3 +1,33 @@
 page-home-coordenador {
 
+    $SIDEMENU_TOP: #00B69F;
+    $SIDEMENU_BOTTOM: #0076A8;
+    $SIDEMENU_TRANSPARENCY: rgba(255,255,255,0.4);
+
+    .scroll-content {
+        background: #939393;
+    }
+
+    .grid {
+        .col {
+            background: -webkit-gradient(left top, $SIDEMENU_TOP, $SIDEMENU_BOTTOM);
+            background: -o-linear-gradient(bottom right, $SIDEMENU_TOP, $SIDEMENU_BOTTOM);
+            background: -moz-linear-gradient(bottom right, $SIDEMENU_TOP, $SIDEMENU_BOTTOM);
+            background: linear-gradient(to bottom right, $SIDEMENU_TOP, $SIDEMENU_BOTTOM);
+            color: white;
+            border: 3px solid #939393;
+            border-radius: 10px;
+        }
+        .row {
+            height: 100px;
+        }
+        .icon {
+            font-size: 5.2em;
+        }
+        .grid2 p {
+            margin-top: -0.3em;
+            font-family: Helvetica, Arial, sans-serif
+        }
+    }
+
 }

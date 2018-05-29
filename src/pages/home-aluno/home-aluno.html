@@ -10,19 +10,48 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>Home</ion-title>
+    <ion-title center>Home</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 <ion-content padding>
-  <ion-list>
-    <ion-item (click)="selecionarEnviarMensagemGrupo()">Enviar mensagem grupo</ion-item>
-    <ion-item (click)="selecionaContatarCoordenador()">Contatar coordenador</ion-item>
-    <ion-item (click)="selecionaMarcarEncontro()">Marcar encontro</ion-item>
-    <ion-item (click)="selecionaRegistrarInteracao()">Registrar interação</ion-item>
-    <ion-item (click)="selecionaEstruturasUniversidade()">Estruturas da universidade</ion-item>
-    <ion-item (click)="selecionaProximosEventos()">Próximos eventos</ion-item>
-    <ion-item (click)="selecionaAvaliarPrograma()">Avaliar o programa</ion-item>
-  </ion-list>
+    <ion-grid text-center>
+        <ion-row>
+          <ion-col  (click)="selecionaProximosEventos()" class="grid1" width-50 height-50>
+            <ion-icon ios="ios-calendar" md="md-calendar">zcv</ion-icon>
+            <p>Eventos</p>
+          </ion-col>
+          <ion-col class="grid2" width-50 (click)="selecionarEnviarMensagemGrupo()">
+            <ion-icon ios="ios-chatboxes" md="md-chatboxes"></ion-icon>
+            <p>Chat</p>
+          </ion-col>
+        </ion-row>  
+        <ion-row>
+            <ion-col (click)="selecionaMarcarEncontro()" class="grid2" width-50 height-50>
+              <ion-icon ios="ios-people" md="md-people"></ion-icon>
+              <p>Encontro</p>
+            </ion-col>
+            <ion-col  (click)="selecionaEstruturasUniversidade()" class="grid2" width-50>   
+              <ion-icon ios="ios-home" md="md-home"></ion-icon>
+              <p>Universidade</p>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+              <ion-col (click)="selecionaAvaliarPrograma()" class="grid2" width-50 height-50>
+                <ion-icon ios="ios-star-outline" md="md-star-outline"></ion-icon>
+                <p>Avaliação</p>
+              </ion-col>
+              <ion-col  (click)="selecionaRegistrarInteracao()" class="grid2" width-50>   
+                <ion-icon ios="ios-grid" md="md-grid"></ion-icon>
+                <p>Interação</p>
+              </ion-col>
+          </ion-row>
+          <ion-row>
+              <ion-col (click)="selecionaAvaliarPrograma()" class="grid2" width-50 height-50>
+                <ion-icon ios="ios-school" md="md-school"></ion-icon>
+                <p>Coordenador</p>
+              </ion-col>
+          </ion-row>   
+    </ion-grid>
 </ion-content>

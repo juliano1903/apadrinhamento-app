@@ -2,15 +2,15 @@
     <ion-content>
         <ion-item id="cabecalho-menu" class="cabecalho-menu">
             <div>
-                <ion-avatar item-start>
+                <ion-avatar>
                     <img src="assets/imgs/avatardefault.png">
-            </ion-avatar>
+                </ion-avatar>
             </div>
             <h2>{{usuarioLogado.nome}}</h2>
             <p>{{usuarioLogado.dsPerfil}}</p>
         </ion-item>
 
-        <ion-list>
+        <ion-list class="list-menu">
             <button ion-item menuClose *ngFor="let pagina of paginas"
                 (click)=irParaPagina(pagina.componente)>
                 <ion-icon [name]="pagina.icone" item-left></ion-icon>
