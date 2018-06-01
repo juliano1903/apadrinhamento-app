@@ -50,7 +50,7 @@ export class UsuarioServiceProvider {
     let idVeterano = vinculoUsuario.usuarioVeterano.idUsuario;
     let idCalouro = vinculoUsuario.usuarioCalouro.idUsuario;
 
-    return this._http.get<Interacao[]>('http://localhost:8100/v1/usuario/interacao/' + idVeterano +'/'+ idCalouro +'/');
+    return this._http.get<Interacao[]>('http://localhost:8100/v1/interacao/' + idVeterano +'/'+ idCalouro +'/');
   }
 
   registrarInteracao(interacao) {

@@ -28,6 +28,7 @@ export class AvaliacaoProgramaPage {
               public alertCtrl: AlertController,
               public usuarioService: UsuarioServiceProvider,
               public _loadingCtrl: LoadingController) {
+    this.avaliacao = new Avaliacao();
   }
 
   onModelChange(data) {

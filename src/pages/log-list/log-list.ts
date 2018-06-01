@@ -29,6 +29,7 @@ export class LogListPage {
     this.usuarioService.buscaInteracoes(this.vinculoUsuario)
     .subscribe(
       (interacoes) => {
+        console.log(interacoes);
         this.interacoes = interacoes;
       }
     )

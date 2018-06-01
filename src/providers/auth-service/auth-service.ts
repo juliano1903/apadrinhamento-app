@@ -15,10 +15,12 @@ export class AuthServiceProvider {
   }
 
   efetuaLogin(usuarioLogin) {
-      console.log('Login: ' + usuarioLogin.nome);
-      this.logado = true;
+    this.logado = true;
       return this._http.post('http://localhost:8100/v1/usuario/login', usuarioLogin)
-      .do((usuario: Usuario) => this._usuarioLogado = usuario);
+      .do((usuario: Usuario) => {
+        this._usuarioLogado = usuario;
+        console.log('Login: ' + this._usuarioLogado.nome);
+      })
   }
 
   obtemUsuarioLogado() {
