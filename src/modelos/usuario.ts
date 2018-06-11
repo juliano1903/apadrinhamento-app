@@ -14,6 +14,7 @@ export class Usuario {
     dataNegativa: string;
     justificativaNegativa: string;
     nickName: string;
+    keySalaChatCoordenador: string;
 
     constructor(matricula, nome, senha, dataMatricula) {
         this.matricula = matricula;

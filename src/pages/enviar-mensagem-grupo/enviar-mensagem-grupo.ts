@@ -25,6 +25,7 @@ export class EnviarMensagemGrupoPage {
   public usuariosVinculados: VinculoUsuarios[];
   public mensagem = new Mensagem;
   public usuarioLogado: Usuario;
+  public usuariosAceitos: Usuario[];
 
   constructor(public navCtrl: NavController, 
               public navParams: NavParams,
@@ -33,14 +34,22 @@ export class EnviarMensagemGrupoPage {
               private _alertCtrl: AlertController,
               private authService: AuthServiceProvider) {
     
-    this.usuarioLogado = authService.obtemUsuarioLogado();
-
     let loading = _loadingCtrl.create({
       content: 'Carregando..'
     });
   
     loading.present();
-  
+    
+    this.usuarioLogado = authService.obtemUsuarioLogado();
+
+    this.usuarioService.usuariosAceitos(this.usuarioLogado.idCurso)
+    .subscribe(
+      (usuarios) => {
+        console.log(usuarios);
+        this.usuariosAceitos = usuarios;
+      }
+    )
+
     this.usuarioService.usuariosVinculados(this.usuarioLogado.idCurso)
       .subscribe(
         (usuarios) => {

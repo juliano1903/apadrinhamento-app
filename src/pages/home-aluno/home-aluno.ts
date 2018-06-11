@@ -55,7 +55,7 @@ export class HomeAlunoPage {
   }
 
   selecionaContatarCoordenador() {
-    this.navCtrl.push(ContatarCoordenadorPage);
+    this.acessarSala(this.usuarioLogado.keySalaChatCoordenador);
   }
 
   selecionaRegistrarInteracao() {
@@ -68,11 +68,10 @@ export class HomeAlunoPage {
 
   selecionarEnviarMensagemGrupo() {
     if(this.usuarioLogado.idTipoUsuario == 1) {
-      this.usuarioService.vinculoUsuario()
+      this.usuarioService.vinculoUsuario(this.usuarioLogado.idTipoUsuario)
       .subscribe(
         (usuarios) => {
           console.log(usuarios);
-          debugger;
           this.acessarSala(usuarios.keySalaChat);
         }
       )

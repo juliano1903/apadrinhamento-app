@@ -91,11 +91,18 @@ export class VincularAlunosPage {
     } else {
 
       let nomeSala = this.vinculoUsuario.getCalouro().matricula + '/' + this.vinculoUsuario.getVeterano().matricula;
-
       let sala = this.usuarioService.adicionarSala(nomeSala);
+
+      let nomeSalaVeteranoCoordenador = this.vinculoUsuario.getVeterano().matricula;
+      let salaVeteranoCoordenador = this.usuarioService.adicionarSala(nomeSalaVeteranoCoordenador);
+
+      let nomeSalaCalouroCoordenador = this.vinculoUsuario.getCalouro().matricula;
+      let salaCalouroCoordenador = this.usuarioService.adicionarSala(nomeSalaCalouroCoordenador);
       
       this.vinculoUsuario.nomeSalaChat = nomeSala;
       this.vinculoUsuario.keySalaChat = sala.key;
+      this.vinculoUsuario.getVeterano().keySalaChatCoordenador = salaVeteranoCoordenador.key;
+      this.vinculoUsuario.getCalouro().keySalaChatCoordenador = salaCalouroCoordenador.key;
 
       this.usuarioService.vincularAlunos(this.vinculoUsuario)
       .subscribe(

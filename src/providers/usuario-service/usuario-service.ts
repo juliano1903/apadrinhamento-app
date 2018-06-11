@@ -25,6 +25,10 @@ export class UsuarioServiceProvider {
     return this._http.get<Usuario[]>('http://localhost:8100/v1/usuario/pendentes-aceite/' + idCurso);
   }
 
+  usuariosAceitos(idCurso) {
+    return this._http.get<Usuario[]>('http://localhost:8100/v1/usuario/aceitos/' + idCurso);
+  }
+
   pendentesVinculacao(idCurso) {
     return this._http.get<Usuario[]>('http://localhost:8100/v1/usuario/pendentes-vinculacao/' + idCurso);
   }
@@ -41,8 +45,8 @@ export class UsuarioServiceProvider {
     return this._http.get<VinculoUsuarios[]>('http://localhost:8100/v1/usuario/vinculados/' + idCurso);
   }
 
-  vinculoUsuario() {
-    return this._http.get<VinculoUsuarios>('http://localhost:8100/v1/usuario/vinculo-usuario/' + this.usuarioLogado.idUsuario);
+  vinculoUsuario(idUsuario) {
+    return this._http.get<VinculoUsuarios>('http://localhost:8100/v1/usuario/vinculo-usuario/' + idUsuario);
   }
 
   buscaInteracoes(vinculoUsuario: VinculoUsuarios) {

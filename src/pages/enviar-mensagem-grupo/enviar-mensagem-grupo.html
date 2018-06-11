@@ -16,14 +16,21 @@
 <ion-content padding>
   <ion-list>
     <ion-item *ngFor="let usuario of usuariosVinculados" (click)="acessarSala(usuario.keySalaChat)">
-      <ion-avatar small item-start>
+      <ion-avatar small item-start class="avt-vinculo">
         <img src="assets/imgs/avatardefault.png">
       </ion-avatar>
-      <ion-avatar small item-start>
+      <ion-avatar small item-start class="avt-vinculo">
         <img src="assets/imgs/avatardefault.png">
       </ion-avatar>
       <h2>{{usuario.usuarioCalouro.nome}}</h2>
       <h2>{{usuario.usuarioVeterano.nome}}</h2>
+    </ion-item>
+    <ion-item *ngFor="let usuario of usuariosAceitos" (click)="acessarSala(usuario.keySalaChatCoordenador)">
+        <ion-avatar small item-start class="avt-usuario">
+          <img src="assets/imgs/avatardefault.png">
+        </ion-avatar>
+        <h2>{{usuario.nome}}</h2>
+        <p>{{usuario.dsPerfil}}</p>
     </ion-item>
   </ion-list>
 </ion-content>

@@ -34,7 +34,7 @@ export class RegistrarInteracaoPage {
               private _alertCtrl: AlertController) {
 
     this.usuarioLogado = _authService.obtemUsuarioLogado();
-    this.usuarioService.vinculoUsuario()
+    this.usuarioService.vinculoUsuario(this.usuarioLogado.matricula)
       .subscribe(
         (vinculo) => {
           this.vinculoUsuario = JSON.parse(JSON.stringify(vinculo));

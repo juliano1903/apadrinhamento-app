@@ -4,7 +4,16 @@ page-enviar-mensagem-grupo {
         margin: 0px 0px 0px 0px !important;
     }
     
-    ion-avatar img  {
+    .avt-vinculo img  {
+        width: 70% !important;
+        height : 70% !important;
+        max-width: 25px !important;  //any size
+        max-height: 100px !important; //any size
+    }
+
+    .avt-usuario img  {
+        margin-left: 10px;
+        margin-right: 33px;
         width: 100% !important;
         height : 100% !important;
         max-width: 35px !important;  //any size
