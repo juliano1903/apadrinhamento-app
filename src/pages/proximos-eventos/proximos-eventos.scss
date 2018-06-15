@@ -1,9 +1,20 @@
 page-proximos-eventos {
+    
+    .item-icon {
+        margin: 0px 0px 0px 10px!important;
+    }
+
+    .item-icon + .item-inner {
+        height: 28px !important;
+    }
+
     .label-md {
-        margin: 0px;
+        margin: 1px 0px 0px 0px;
     }
 
     .item-md {
         padding: 0px;
+        min-height: 2.4rem;
     }
+
 }

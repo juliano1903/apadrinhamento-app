@@ -9,7 +9,7 @@
 
 <ion-content padding>
   <ion-list>
-    <ion-item *ngFor="let evento of proximosEventos">
+    <ion-item *ngFor="let evento of proximosEventos" (click)="showPrompt(evento)">
         <ion-item small no-lines>
           <h4>{{evento.nome}}</h4>
         </ion-item>

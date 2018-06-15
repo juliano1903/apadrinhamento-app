@@ -45,6 +45,15 @@ export class ProximosEventosPage {
     console.log('ionViewDidLoad ProximosEventosPage');
   }
 
+  showPrompt(evento: Evento) {
+    let prompt = this._alertCtrl.create({
+      title: 'Evento',
+      message: evento.descricao,
+      buttons: ['OK']
+    });
+    prompt.present();
+  }
+
   dataEmString(data) {
     return data;
   }

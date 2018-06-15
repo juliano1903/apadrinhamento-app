@@ -20,7 +20,7 @@ import { Interacao } from '../../modelos/interacao';
 })
 export class MarcarEncontroPage {
 
-  data = { titulo:'', descricao:'', dataInteracao: '', coordenador: false, aluno: false };
+  data = { titulo:'', descricao:'', dataInteracao: new Date().toISOString(), coordenador: false, aluno: false };
 
   public vinculoUsuario: VinculoUsuarios;
   public usuarioLogado: Usuario;

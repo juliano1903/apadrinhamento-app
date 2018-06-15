@@ -89,9 +89,9 @@ export class UsuarioServiceProvider {
     return this._http.post('http://localhost:8100/v1/usuario/salva', usuario, httpOptions);
   }
 
-  salvarAvaliacao(avaliacao) {
+  salvarAvaliacao(avaliacao, usuario) {
 
-    avaliacao.usuario = this.usuarioLogado;
+    avaliacao.usuario = usuario;
 
     console.log(avaliacao);
 

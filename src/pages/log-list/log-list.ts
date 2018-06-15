@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
 import { VinculoUsuarios } from '../../modelos/vinculoUsuarios';
 import { Interacao } from '../../modelos/interacao';
 import { UsuarioServiceProvider } from '../../providers/usuario-service/usuario-service';
@@ -23,7 +23,8 @@ export class LogListPage {
 
   constructor(public navCtrl: NavController, 
               public navParams: NavParams,
-              public usuarioService: UsuarioServiceProvider) {
+              public usuarioService: UsuarioServiceProvider,
+              public _alertCtrl: AlertController,) {
 
     this.vinculoUsuario = navParams.get("vinculoUsuario");
     this.usuarioService.buscaInteracoes(this.vinculoUsuario)
@@ -37,6 +38,15 @@ export class LogListPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad LogListPage');
+  }
+
+  showPrompt(interacao: Interacao) {
+    let prompt = this._alertCtrl.create({
+      title: 'Interação',
+      message: interacao.descricao,
+      buttons: ['OK']
+    });
+    prompt.present();
   }
 
 }

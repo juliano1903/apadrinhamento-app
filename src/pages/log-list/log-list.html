@@ -9,9 +9,20 @@
 
 <ion-content padding>
     <ion-list>
-      <ion-item *ngFor="let interacao of interacoes">
-        <h2>{{interacao}}</h2>
-        <h2>{{interacao}}</h2>
+      <ion-item *ngFor="let interacao of interacoes" (click)="showPrompt(interacao)">
+          <ion-item small no-lines>
+              <h4>{{interacao.titulo}}</h4>
+          </ion-item>
+          <ion-item small no-lines>
+            <ion-icon item-start small name="md-calendar"></ion-icon>
+            <p>{{interacao.dataInteracaoString}}</p> 
+          </ion-item>
+          <ion-item small no-lines>
+            <ion-icon item-start small name="md-checkmark-circle"></ion-icon>
+            <p *ngIf="interacao.usuarioVeterano">{{interacao.usuarioVeterano.nome}}</p> 
+            <p *ngIf="interacao.usuarioCalouro">{{interacao.usuarioCalouro.nome}}</p> 
+            <p *ngIf="interacao.usuarioCoordenador">{{interacao.usuarioCoordenador.nome}}</p> 
+          </ion-item>
       </ion-item>
     </ion-list>
   </ion-content>

@@ -9,6 +9,7 @@ export class Interacao {
     titulo:string;
     descricao: string;
     coordenador: boolean;
+    dataInteracaoString: string;
 
     preencher(vinculoUsuario) {
         this.usuarioCalouro = new Usuario(vinculoUsuario.usuarioCalouro.matricula, 

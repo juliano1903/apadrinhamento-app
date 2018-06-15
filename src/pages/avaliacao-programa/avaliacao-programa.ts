@@ -4,6 +4,8 @@ import { Ionic2RatingModule } from "ionic2-rating";
 import { UsuarioServiceProvider } from '../../providers/usuario-service/usuario-service';
 import { HomeAlunoPage } from '../home-aluno/home-aluno';
 import { Avaliacao } from '../../modelos/avaliacao';
+import { Usuario } from '../../modelos/usuario';
+import { AuthServiceProvider } from '../../providers/auth-service/auth-service';
 
 
 /**
@@ -22,13 +24,16 @@ export class AvaliacaoProgramaPage {
 
   avaliacao: Avaliacao;
   data = {observacao: ''};
+  usuarioLogado: Usuario;
 
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
               public alertCtrl: AlertController,
               public usuarioService: UsuarioServiceProvider,
-              public _loadingCtrl: LoadingController) {
+              public _loadingCtrl: LoadingController,
+              private _authService: AuthServiceProvider) {
     this.avaliacao = new Avaliacao();
+    this.usuarioLogado = _authService.obtemUsuarioLogado();
   }
 
   onModelChange(data) {
@@ -41,7 +46,9 @@ export class AvaliacaoProgramaPage {
       content : 'salvando...'
     })
 
-    this.usuarioService.salvarAvaliacao(this.avaliacao)
+    this.avaliacao.observacao = this.data.observacao;
+
+    this.usuarioService.salvarAvaliacao(this.avaliacao, this.usuarioLogado)
     .subscribe(
       (avaliacao) => {
         this.navCtrl.setRoot(HomeAlunoPage);
