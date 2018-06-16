@@ -46,7 +46,7 @@ export class UsuarioServiceProvider {
   }
 
   vinculoUsuario(idUsuario) {
-    return this._http.get<VinculoUsuarios>('http://localhost:8100/v1/usuario/vinculo-usuario/' + idUsuario);
+    return this._http.get<VinculoUsuarios>('http://localhost:8100/v1/vinculo/vinculo-usuario/' + idUsuario);
   }
 
   buscaInteracoes(vinculoUsuario: VinculoUsuarios) {
@@ -135,7 +135,7 @@ export class UsuarioServiceProvider {
     
     console.log('Vincular usuarios');
     console.log(vinculoUsuarios);
-    return this._http.post('http://localhost:8100/v1/usuario/vincula', vinculoUsuarios);
+    return this._http.post('http://localhost:8100/v1/vinculo/vincula', vinculoUsuarios);
   
   }
 
@@ -151,7 +151,7 @@ export class UsuarioServiceProvider {
     
     console.log('Desvincular usuarios');
     console.log(vinculoUsuarios);
-    return this._http.post('http://localhost:8100/v1/usuario/desvincula', vinculoUsuarios);
+    return this._http.post('http://localhost:8100/v1/vinculo/desvincula', vinculoUsuarios);
   
   }
 
