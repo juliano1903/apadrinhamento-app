@@ -16,10 +16,10 @@
   <ion-list>
     <ion-item *ngFor="let usuario of usuariosVinculados" (click)="showPrompt(usuario)">
       <ion-avatar small item-start>
-        <img src="assets/imgs/avatardefault.png">
+        <img src="{{usuario.usuarioCalouro.urlImagemPerfil}}">
       </ion-avatar>
       <ion-avatar small item-start>
-        <img src="assets/imgs/avatardefault.png">
+        <img src="{{usuario.usuarioVeterano.urlImagemPerfil}}">
       </ion-avatar>
       <h2>{{usuario.usuarioCalouro.nome}}</h2>
       <h2>{{usuario.usuarioVeterano.nome}}</h2>

@@ -42,7 +42,7 @@ export class UsuarioServiceProvider {
   }
 
   usuariosVinculados(idCurso) {
-    return this._http.get<VinculoUsuarios[]>('http://localhost:8100/v1/usuario/vinculados/' + idCurso);
+    return this._http.get<VinculoUsuarios[]>('http://localhost:8100/v1/vinculo/vinculados/' + idCurso);
   }
 
   vinculoUsuario(idUsuario) {

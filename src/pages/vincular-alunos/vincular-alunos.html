@@ -8,7 +8,7 @@
   <ion-list>
     <ion-item *ngFor="let usuario of usuarioPendente" (click)="aprovarVinculacao(usuario)">
       <ion-avatar small item-start>
-        <img src="assets/imgs/avatardefault.png">
+        <img src="{{usuario.urlImagemPerfil}}">
       </ion-avatar>
       <h2>{{usuario.nome}}</h2>
       <p>{{usuario.dsPerfil}}</p>
