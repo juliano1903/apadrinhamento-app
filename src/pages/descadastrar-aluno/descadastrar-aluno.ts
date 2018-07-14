@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, LoadingController } from 'ionic-angular';
+import { Usuario } from '../../modelos/usuario';
+import { UsuarioServiceProvider } from '../../providers/usuario-service/usuario-service';
+import { AuthServiceProvider } from '../../providers/auth-service/auth-service';
 
 /**
  * Generated class for the DescadastrarAlunoPage page.
@@ -15,11 +18,64 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class DescadastrarAlunoPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  public usuarioPendente: Usuario[];
+  public usuarioLogado: Usuario;
+
+  constructor(public navCtrl: NavController,
+              public navParams: NavParams, 
+              private usuarioService: UsuarioServiceProvider,
+              private _loadingCtrl: LoadingController,
+              private _authService: AuthServiceProvider) {
+
+    this.usuarioLogado = _authService.obtemUsuarioLogado();
+
+    let loading = _loadingCtrl.create({
+      content: 'Carregando..'
+    });
+
+    loading.present();
+
+    this.usuarioService.pendentesVinculacao(this.usuarioLogado.idCurso)
+      .subscribe(
+        (usuarios) => {
+          console.log(usuarios);
+          this.usuarioPendente = usuarios;
+          loading.dismiss();
+        }
+      )
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad DescadastrarAlunoPage');
+  aprovarCadastro(usuario) {
+
+    let loading = this._loadingCtrl.create({
+      content: 'Carregando..'
+    });
+
+    loading.present();
+
+    this.usuarioService.aprovarCadastro(usuario)
+      .subscribe(
+      (usuarios) => {
+        console.log(usuarios);
+        this.atualizarPagina();
+        loading.dismiss();
+      }
+    )
   }
 
+  showPrompt(usuario: Usuario) {
+    this.usuarioService.aprovarCadastro(usuario)
+    .subscribe(
+      (usuarios) => {
+        console.log(usuarios);
+        this.atualizarPagina();
+      }
+    )
+  }
+
+  atualizarPagina() {
+    let paginaAtual: number = this.navCtrl.length() - 1;
+    this.navCtrl.push(DescadastrarAlunoPage);
+    this.navCtrl.remove(paginaAtual);
+  }
 }

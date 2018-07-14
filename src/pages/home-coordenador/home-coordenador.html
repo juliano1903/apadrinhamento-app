@@ -30,24 +30,24 @@
           </ion-col>
         </ion-row>  
         <ion-row>
-            <ion-col  (click)="selecionarEnviarMensagemGrupo()" class="grid2" width-50 height-50>
-              <ion-icon ios="ios-chatboxes" md="md-chatboxes"></ion-icon>
-              <p>Chat</p>
-            </ion-col>
             <ion-col (click)="selecionarVincularAlunos()" class="grid2" width-50>   
               <ion-icon ios="ios-people" md="md-people"></ion-icon>
               <p>Vincular</p>
             </ion-col>
-          </ion-row>
-          <ion-row>
-              <ion-col (click)="selecionarDesvincularAlunos()" class="grid2" width-50 height-50>
+            <ion-col (click)="selecionarDesvincularAlunos()" class="grid2" width-50 height-50>
                 <ion-icon ios="ios-contact" md="md-contact"></ion-icon>
                 <p>Desvincular</p>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col  (click)="selecionarEnviarMensagemGrupo()" class="grid2" width-50 height-50>
+                <ion-icon ios="ios-chatboxes" md="md-chatboxes"></ion-icon>
+                <p>Chat</p>
               </ion-col>
-              <ion-col  (click)="selecionarConsultarLogs()" class="grid2" width-50>   
-                <ion-icon ios="ios-archive" md="md-archive"></ion-icon>
-                <p>Logs</p>
-              </ion-col>
+            <ion-col  (click)="selecionarConsultarLogs()" class="grid2" width-50>   
+              <ion-icon ios="ios-archive" md="md-archive"></ion-icon>
+              <p>Logs de Interação</p>
+            </ion-col>
           </ion-row>
           <ion-row>
               <ion-col (click)="selecionaMarcarEncontro()" class="grid2" width-50 height-50>

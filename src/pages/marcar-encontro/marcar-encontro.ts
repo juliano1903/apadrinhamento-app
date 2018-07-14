@@ -65,8 +65,8 @@ export class MarcarEncontroPage {
     .subscribe(
       (interacao) => {
         this._alertCtrl.create({
-          title: 'Interação',
-          subTitle: 'Interação regitrada com sucesso!',
+          title: 'Encontro',
+          subTitle: 'Encontro regitrado com sucesso!',
           buttons: [{
             text: 'Ok'
           }]

@@ -86,6 +86,13 @@ export class AprovarCadastroPage {
                   this.atualizarPagina();
                 }
               )
+              this._alertCtrl.create({
+                title: 'Reprovar Cadastro',
+                subTitle: 'Cadastro do aluno reprovado!',
+                buttons: [{
+                  text: 'Ok'
+                }]
+              }).present();
           }
         }
       ]
